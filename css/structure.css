@@ -1,0 +1,58 @@
+:root {
+    --font-size: 6em;
+}
+
+.container {
+    position: relative;
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    z-index: 2;
+    transition: all 0.2s ease;
+}
+
+
+.gradient {
+    background-image: linear-gradient(60deg, rgb(10 88 125),  rgb(166 64 250));
+    /*
+    background-attachment: fixed;
+    */
+}
+.clip {
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+}
+
+.title h1 {
+    font-size: var(--font-size);
+    letter-spacing: calc((var(--font-size) / 100) * -0.5);
+    line-height: calc(((var(--font-size) / 100) * 13));
+}
+.title h2 {
+    --reduced-size: calc((var(--font-size) / 100) * 95);
+    font-size: var(--reduced-size);
+    letter-spacing: calc((var(--reduced-size) / 100)* -0.2);
+    line-height: calc(((var(--reduced-size) / 100) * 13));
+}
+
+p {
+    padding: 1em;
+    
+}
+
+.container span {
+    border-radius: 8px;
+      padding: 4px;
+    font-weight: 700;
+}
+.css {
+    background: #343434;
+  
+}

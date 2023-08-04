@@ -1,0 +1,25 @@
+:root {
+    --bg: #242735;
+    --text: #cbcbcb;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+body::before {
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  z-index: -1;
+  background-image: url(/img/lines.svg);
+  background-size: 8px;
+  background-position: center center;
+  background-repeat: repeat;
+  opacity: 0.5;
+}

@@ -1,0 +1,132 @@
+:root {
+    --gap: 0.5em;
+    --bradius: 8px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    line-height: 1.1em;
+}
+
+.container {
+    width: clamp(400px, 1200px, 80%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+
+    box-shadow: 6px 8px 20px 0px #0000002e;
+    border-radius: var(--bradius);
+    height: ;
+    width: clamp(300px, 600px, 80%);
+    background: linear-gradient(to right, #3b4265 5%, #292f4d 100%)
+}
+
+
+.modalContentWrapper {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    padding: 1em;
+}
+
+.modal .left {
+
+    margin-right: var(--gap);
+    background-image: url(/img/maksim-larin-NOpsC3nWTzY-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--bradius);
+    
+}
+
+.modal .right {
+
+}
+
+.modal .right .title {
+    font-size: 1.75em;
+    padding-bottom: 0.3em;
+}
+
+.modal .right  p {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal .right .buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6em;
+    margin-block: var(--gap);
+}
+
+.modal .right .buttonContainer button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:  var(--gap) calc(var(--gap)*2);
+    border-radius: calc(var(--bradius) / 2);
+    border: 0px;
+
+    border:none;
+    cursor:pointer;
+    color:#666666;
+    font-size:1em;
+    font-weight:bold;
+    text-decoration:none;
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background:linear-gradient(to right, #aba7bd 5%, #b9bac3 100%);
+    background-color:#aba7bd;
+}
+
+.modal .right .buttonContainer button.instantBuy {
+    
+    background:linear-gradient(to right, #7c6ebb 5%, #5060f3 100%);
+    background-color:#aba7bd;
+    color: var(--text);
+}
+
+
+.modal .right .buttonContainer button.add {
+
+    
+}
+
+.modal .right .buttonContainer button.add.added {
+    color: transparent;
+    
+}
+
+.modal .right .buttonContainer button.add.added::before {
+    content: '✔ Added!';
+    position: absolute;
+    color:#666666;
+}
+
+.modal .right .buttonContainer button.favorite.selected {
+    background:linear-gradient(to right, #ff6363 5%, #bb2b2b 100%);
+    color: var(--text);
+}
+
+
+/* Hover Effects */
+
+.modal:hover {
+
+    box-shadow:  1px 1px 20px 0px #ffffff0f;
+
+}
+
+.modal:hover .left {
+
+    
+}
+
+/* Single image showcase animation */
+

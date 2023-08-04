@@ -23,7 +23,7 @@ body {
 
 .attribution {
     position: absolute;
-    bottom: 5px;a
+    bottom: 5px;
 }
 
 .attribution,
@@ -35,6 +35,10 @@ body {
     width: 100%;
     background: var(--contrast);
     z-index: 1000;
+}
+.Social-icons .icon svg{
+    width: 30px;
+    height: 30px;
 }
 
 
@@ -59,6 +63,7 @@ body {
     color: #8f95bd;
 
 }
+
 
 
 /* Hover Effects */

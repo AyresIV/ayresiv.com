@@ -40,6 +40,16 @@ body {
     width: 30px;
     height: 30px;
 }
+.opts .icon svg{
+    width: 30px;
+    height: 30px;
+}
+.line {
+    width: 100%; /* Fill the available horizontal space */
+    height: 2px; /* Adjust height as needed */
+    background-color: white; /* Adjust color as needed */
+    margin: 10px 0; /* Adjust margin as needed */
+}
 
 
 .attribution svg {
@@ -66,6 +76,7 @@ body {
 
 
 
+
 /* Hover Effects */
 
 .modal:hover {
@@ -78,5 +89,7 @@ body {
 
     
 }
+
+
 
 /* Single image showcase animation */

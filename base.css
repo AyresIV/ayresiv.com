@@ -34,7 +34,6 @@ body {
     overflow: hidden;
 }
 
-/* Splash Screen */
 .splash-screen {
     display: flex;
     flex-direction: column;

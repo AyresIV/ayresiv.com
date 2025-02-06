@@ -8,7 +8,7 @@ enterButton.addEventListener('click', (e) => {
     const ripple = document.createElement('span');
     ripple.classList.add('ripple');
 
-    // Position the ripple at the click location
+
     const rect = enterButton.getBoundingClientRect();
     const size = Math.max(rect.width, rect.height);
     ripple.style.width = `${size}px`;

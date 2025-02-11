@@ -1,0 +1,287 @@
+:root {
+    --color-primary: #bb86fc; /* Neon purple */
+    --color-secondary: #ff79c6; /* Neon pink */
+    --color-background: #1a1a1a; /* Dark background */
+    --color-text: #f4f4f9; /* Light text */
+    --color-nav-bg: #000000; /* Darker blue for contrast */
+    --color-nav-border: rgba(255, 255, 255, 0.1); /* Subtle border */
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+.nav {
+    display: flex;
+    justify-content: flex-start; /* Align logo to the left */
+    align-items: center;
+    padding: 20px;
+    background-color: var(--color-nav-bg);
+    color: white;
+    border-bottom: 1px solid var(--color-nav-border);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav__logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-primary);
+    font-family: 'Poppins', sans-serif;
+    margin-right: auto; /* Push the logo to the left */
+}
+
+.nav__list {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    position: absolute; /* Position the list absolutely */
+    left: 50%; /* Center the list horizontally */
+    transform: translateX(-50%); /* Adjust for exact centering */
+}
+
+.nav__item {
+    position: relative;
+}
+
+.nav__link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav__link:hover {
+    color: var(--color-primary);
+}
+
+.nav__link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.nav__link:hover::after {
+    width: 100%;
+}
+
+.nav__auth {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px; /* Added gap between buttons */
+}
+
+.nav__auth-link {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-weight: 500;
+}
+
+.nav__auth-link--signin {
+    background-color: var(--color-primary);
+}
+
+.nav__auth-link--signin:hover {
+    background-color: #9a67ea; /* Darker purple */
+    transform: translateY(-2px);
+}
+
+.nav__auth-link--get-started {
+    background-color: var(--color-secondary);
+}
+
+.nav__auth-link--get-started:hover {
+    background-color: #e65aad; /* Darker pink */
+    transform: translateY(-2px);
+}
+
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: var(--color-nav-bg);
+    color: white;
+}
+
+.hero__title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+}
+
+.hero__subtitle, .hero__guarantee {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.tabs__arrow {
+    background: none;
+    border: none;
+    color: var(--color-secondary);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.tabs__arrow:hover {
+    color: #e65aad; /* Darker pink */
+}
+
+.tabs__content {
+    display: flex;
+    overflow: hidden;
+    width: 300px;
+}
+
+.tabs__tab {
+    flex: 0 0 100%;
+    text-align: center;
+    transition: transform 0.5s ease;
+}
+
+.tabs__tab-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+}
+
+.tabs__tab-price, .tabs__tab-description {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.tabs__tab-button {
+    padding: 10px 20px;
+    background-color: var(--color-secondary);
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.tabs__tab-button:hover {
+    background-color: #e65aad; /* Darker pink */
+}
+
+.services, .bundles {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.services__title, .bundles__title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--color-primary);
+}
+
+.services__list, .bundles__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.services__item, .bundles__item {
+    background-color: var(--color-nav-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.services__item:hover, .bundles__item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.services__item-title, .bundles__item-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--color-primary);
+}
+
+.services__item-price, .bundles__item-price {
+    font-size: 1.2rem;
+    color: var(--color-secondary);
+}
+
+.bundle-details {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--color-nav-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.bundle-details h3 {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.bundle-details p {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: 10px;
+}
+.tabs__tab.tabs__tab--active h2.tabs__tab-title {
+    box-shadow: none !important; /* Remove shadow */
+    text-decoration: none !important; /* Remove underline */
+    border: none !important; /* Remove border if present */
+    outline: none !important; /* Remove outline if present */
+}
+/* Discord Button */
+.discord-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #2f2f2f; /* Discord's brand color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.discord-button:hover {
+    background-color: #ff00fb; /* Darker shade for hover */
+}
+
+.discord-button i {
+    margin-right: 8px;
+}
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--color-nav-bg);
+    color: var(--color-text);
+    margin-top: 50px;
+    border-top: 1px solid var(--color-nav-border);
+}

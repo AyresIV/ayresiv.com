@@ -1,13 +1,28 @@
 /* Partners Section */
+.about__content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Spacing between items */
+    max-width: 1200px; /* Adjust based on your design */
+    margin: 0 auto; /* Center the grid */
+    padding: 20px;
+    grid-auto-flow: dense; /* Ensure items are placed in order */
+}
+
 .partner {
     background-color: var(--color-nav-bg);
     padding: 20px;
     border-radius: 10px;
-    margin-bottom: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
+/* Center the last partner if it's alone in the last row */
+.about__content .partner:last-child:nth-child(3n - 2) {
+    grid-column: 2; /* Center the last item */
+}
+
+/* Partner Image */
 .partner__image {
     width: 100px;
     height: 100px;
@@ -15,12 +30,14 @@
     margin-bottom: 15px;
 }
 
+/* Partner Name */
 .partner__name {
     font-size: 1.2rem;
     color: var(--color-primary);
     margin-bottom: 15px;
 }
 
+/* Partner Socials */
 .partner__socials {
     display: flex;
     justify-content: center;
@@ -44,6 +61,8 @@
 .partner__social i {
     font-size: 1.2rem;
 }
+
+/* Root Variables */
 :root {
     --color-primary: #bb86fc; /* Neon purple */
     --color-secondary: #ff79c6; /* Neon pink */
@@ -53,7 +72,7 @@
     --color-nav-border: rgba(255, 255, 255, 0.1); /* Subtle border */
 }
 
-
+/* Body */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -62,6 +81,7 @@ body {
     color: var(--color-text);
 }
 
+/* Navigation */
 .nav {
     display: flex;
     justify-content: flex-start; /* Align logo to the left */
@@ -160,6 +180,7 @@ body {
     transform: translateY(-2px);
 }
 
+/* Hero Section */
 .hero {
     text-align: center;
     padding: 50px 20px;
@@ -178,6 +199,7 @@ body {
     margin-bottom: 20px;
 }
 
+/* Tabs Section */
 .tabs {
     display: flex;
     justify-content: center;
@@ -236,6 +258,7 @@ body {
     background-color: #e65aad; /* Darker pink */
 }
 
+/* Services and Bundles Sections */
 .services, .bundles {
     padding: 50px 20px;
     text-align: center;
@@ -278,6 +301,7 @@ body {
     color: var(--color-secondary);
 }
 
+/* Bundle Details */
 .bundle-details {
     margin-top: 20px;
     padding: 15px;
@@ -297,12 +321,8 @@ body {
     color: var(--color-text);
     margin-bottom: 10px;
 }
-.tabs__tab.tabs__tab--active h2.tabs__tab-title {
-    box-shadow: none !important; /* Remove shadow */
-    text-decoration: none !important; /* Remove underline */
-    border: none !important; /* Remove border if present */
-    outline: none !important; /* Remove outline if present */
-}
+
+/* About Section */
 .about {
     padding: 50px 20px;
     text-align: center;
@@ -338,32 +358,4 @@ body {
     color: var(--color-text);
     margin-top: 50px;
     border-top: 1px solid var(--color-nav-border);
-}
-/* Partners Section */
-.about__content {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 20px; /* Spacing between items */
-    max-width: 1200px; /* Adjust based on your design */
-    margin: 0 auto; /* Center the grid */
-    padding: 20px;
-}
-
-.partner {
-    background-color: var(--color-nav-bg);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-/* Center the last partner */
-.about__content::after {
-    content: "";
-    flex: auto;
-}
-
-/* Adjust the last partner to span the middle column */
-.about__content .partner:last-child {
-    grid-column: 2; /* Center the last item */
 }

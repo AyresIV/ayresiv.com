@@ -277,3 +277,87 @@ body {
     color: white;
     font-size: 1.2rem;
 }
+@media screen and (max-width: 768px) {
+            .landing {
+                padding: 20px;
+                text-align: center;
+            }
+            
+            .title h1, .title h2, .title h3 {
+                font-size: calc(1rem + 1vw);
+                line-height: 1.4;
+                margin: 10px 0;
+                word-wrap: break-word;
+            }
+            
+            .Social-icons {
+                flex-direction: row; /* Keep horizontal layout */
+                gap: 15px;
+            }
+            
+            .opts {
+                flex-direction: row; /* Keep horizontal layout */
+                gap: 15px;
+            }
+            
+            .opts .line {
+                width: 2px;
+                height: 30px;
+            }
+            
+            .icon {
+                margin: 0;
+                text-decoration: none;
+                font-size: 1.5rem;
+            }
+            
+            .logo {
+                max-width: 80px;
+            }
+        }
+            .copyright {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .logo {
+            max-width: 100px;
+            margin: 0 auto 15px auto;
+            display: block;
+        }
+        
+        .copyright p {
+            width: 100%;
+            margin: 0;
+        }
+
+        .opts a.icon {
+            text-decoration: none !important;
+        }
+
+        .Social-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .opts {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .opts .line {
+            width: 30px;
+            height: 2px;
+            background: currentColor;
+        }
+
+       

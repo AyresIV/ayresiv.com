@@ -60,7 +60,7 @@ const SplashScreen = ({ onEnter }) => {
         </div>
 
         <button onClick={handleClick} className="splash-enter-button">
-          <span className="button-text">Enter the Arena</span>
+          <span className="button-text">Get Started</span>
           <span className="button-glow"></span>
         </button>
 

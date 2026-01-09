@@ -94,35 +94,26 @@
     color: #f4f4f9;
     text-decoration: none;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
     display: block;
-    padding: 12px 16px;
+    padding: 12px 20px;
     border-radius: 8px;
     transition: all 0.3s ease;
     position: relative;
+    background: rgba(187, 134, 252, 0.15);
+    border: 1px solid rgba(187, 134, 252, 0.3);
 }
 
 .nav__link:hover {
-    color: #bb86fc;
-    background: rgba(187, 134, 252, 0.1);
-    transform: translateX(4px);
+    color: #f4f4f9;
+    background: rgba(187, 134, 252, 0.25);
+    border-color: rgba(187, 134, 252, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(187, 134, 252, 0.2);
 }
 
 .nav__link::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 3px;
-    height: 0;
-    background: linear-gradient(180deg, #bb86fc, #ff79c6);
-    border-radius: 2px;
-    transition: height 0.3s ease;
-}
-
-.nav__link:hover::before {
-    height: 70%;
+    display: none;
 }
 
 .nav__discord {
@@ -147,6 +138,28 @@
     background: rgba(0, 102, 255, 0.1);
     border-color: rgba(0, 102, 255, 0.6);
     transform: scale(1.1);
+}
+
+.nav__contact-btn {
+    background: linear-gradient(135deg, #bb86fc, #ff79c6) !important;
+    color: #fff !important;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 12px 24px !important;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-top: 12px;
+    border: none !important;
+}
+
+.nav__contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(187, 134, 252, 0.4);
+    background: linear-gradient(135deg, #ff79c6, #bb86fc) !important;
+}
+
+.nav__contact-btn::after {
+    display: none !important;
 }
 
 /* Desktop Navigation */
@@ -175,7 +188,7 @@
     }
 
     .nav__link {
-        padding: 10px 16px;
+        padding: 10px 20px;
     }
 
     .nav__link::before {
@@ -183,19 +196,12 @@
     }
 
     .nav__link::after {
-        content: '';
-        position: absolute;
-        bottom: 8px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #bb86fc, #ff79c6);
-        transition: width 0.3s ease;
+        display: none;
     }
 
-    .nav__link:hover::after {
-        width: 70%;
+    .nav__contact-btn {
+        margin-top: 0;
+        padding: 10px 24px !important;
     }
 
     .nav__discord {

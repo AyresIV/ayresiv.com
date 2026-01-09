@@ -231,6 +231,19 @@ body {
     justify-content: center;
 }
 
+.social-icon.contact-icon {
+    background: linear-gradient(135deg, rgba(187, 134, 252, 0.2), rgba(255, 121, 198, 0.2));
+    color: #ff79c6;
+    border-color: #ff79c6;
+}
+
+.social-icon.contact-icon:hover {
+    background: linear-gradient(135deg, rgba(187, 134, 252, 0.4), rgba(255, 121, 198, 0.4));
+    color: #bb86fc;
+    border-color: #bb86fc;
+    box-shadow: 0 8px 30px rgba(255, 121, 198, 0.4);
+}
+
 /* Keep old styles for backwards compatibility */
 .Social-icons {
     display: flex;

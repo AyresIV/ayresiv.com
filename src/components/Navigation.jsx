@@ -37,7 +37,7 @@ const Navigation = ({ isOptimizationsPage = false }) => {
           <Link to="/partners" className="nav__link" onClick={closeMenu}>Partners</Link>
         </li>
         <li className="nav__item">
-          <Link to="/contact" className="nav__link" onClick={closeMenu}>Contact</Link>
+          <Link to="/contact" className="nav__link nav__contact-btn" onClick={closeMenu}>Contact Me</Link>
         </li>
       </ul>
       <a href="https://discord.gg/spartagg" target="_blank" rel="noopener noreferrer" className="nav__discord" title="Join our Discord">

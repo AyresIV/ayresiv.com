@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Settings, Github, Twitch } from 'lucide-react';
+import { Settings, Github, Twitch, Mail } from 'lucide-react';
 
 const SocialIcons = () => {
   const XLogo = () => (
@@ -33,6 +33,10 @@ const SocialIcons = () => {
         <a href="https://github.com/AyresIV" className="social-icon github-icon" target="_blank" rel="noopener noreferrer" title="GitHub">
           <Github size={28} />
         </a>
+
+        <Link to="/contact" className="social-icon contact-icon" title="Contact Me">
+          <Mail size={28} />
+        </Link>
       </div>
     </div>
   );

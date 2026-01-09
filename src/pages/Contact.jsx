@@ -20,22 +20,43 @@ const Contact = () => {
     setStatusMessage('');
 
     try {
-      const result = await emailjs.sendForm(
+      // Get form values
+      const formData = new FormData(formRef.current);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const title = formData.get('title');
+      const message = formData.get('message');
+
+      // Send email using emailjs.send() with explicit parameters
+      const result = await emailjs.send(
         'service_b8fr3jm', // Your service ID
-        'template_xre5v4d', // Your template ID
-        formRef.current,
+        'template_uj0n9bj', // Your template ID
+        {
+          to_email: 'ayresivbiz@gmail.com',
+          name: name,
+          email: email,
+          title: title,
+          message: message
+        },
         'r1CpVimPomZ2wZgpH' // Your public key
       );
+
+      console.log('Email sent successfully:', result);
 
       if (result.text === 'OK') {
         setStatusMessage('✓ Message sent successfully! I\'ll get back to you soon.');
         setStatusType('success');
         formRef.current.reset();
         setTimeout(() => setStatusMessage(''), 5000);
+      } else {
+        setStatusMessage('✗ Failed to send message. Please try again.');
+        setStatusType('error');
       }
     } catch (error) {
       console.error('Failed to send email:', error);
-      setStatusMessage('✗ Failed to send message. Please try again.');
+      console.error('Error code:', error.status);
+      console.error('Error text:', error.text);
+      setStatusMessage(`✗ Failed to send message: ${error.text || error.message}`);
       setStatusType('error');
     } finally {
       setIsLoading(false);
@@ -72,7 +93,7 @@ const Contact = () => {
                 <input
                   type="text"
                   id="name"
-                  name="from_name"
+                  name="name"
                   className="form-input"
                   placeholder="Your Name"
                   required
@@ -84,7 +105,7 @@ const Contact = () => {
                 <input
                   type="email"
                   id="email"
-                  name="from_email"
+                  name="email"
                   className="form-input"
                   placeholder="your.email@example.com"
                   required
@@ -96,7 +117,7 @@ const Contact = () => {
                 <input
                   type="text"
                   id="subject"
-                  name="subject"
+                  name="title"
                   className="form-input"
                   placeholder="What's this about?"
                   required

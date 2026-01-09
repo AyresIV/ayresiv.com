@@ -21,7 +21,7 @@ const Contact = () => {
 
     try {
       const result = await emailjs.sendForm(
-        'service_n9yt7kr', // Your service ID
+        'service_b8fr3jm', // Your service ID
         'template_4aezwqe', // Your template ID
         formRef.current,
         'r1CpVimPomZ2wZgpH' // Your public key

@@ -42,7 +42,7 @@ const Home = () => {
             </p>
             
             <div className="hero-cta">
-              <Link to="/optimizations" className="cta-button primary">
+              <Link to="/optimizations" className="cta-button secondary">
                 Explore Packages
               </Link>
               <Link to="/partners" className="cta-button secondary">

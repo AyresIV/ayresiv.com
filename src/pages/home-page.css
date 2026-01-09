@@ -588,18 +588,18 @@
 }
 
 .cta-button.secondary {
-    background: rgba(187, 134, 252, 0.1);
-    color: #bb86fc;
-    border-color: #bb86fc;
+    background: linear-gradient(135deg, rgba(187, 134, 252, 0.2) 0%, rgba(255, 121, 198, 0.2) 100%);
+    color: #cbcbcb;
+    border: 2px solid rgba(187, 134, 252, 0.4);
     backdrop-filter: blur(10px);
 }
 
 .cta-button.secondary:hover {
-    background: rgba(187, 134, 252, 0.2);
+    background: linear-gradient(135deg, rgba(187, 134, 252, 0.3) 0%, rgba(255, 121, 198, 0.3) 100%);
     color: #ff79c6;
     border-color: #ff79c6;
     transform: translateY(-4px);
-    box-shadow: 0 15px 40px rgba(187, 134, 252, 0.3);
+    box-shadow: 0 15px 40px rgba(187, 134, 252, 0.4), 0 0 30px rgba(255, 121, 198, 0.2);
 }
 
 .hero-features {

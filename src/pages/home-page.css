@@ -8,6 +8,8 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Epic gradient overlay */
@@ -669,18 +671,22 @@
 .social-section {
     padding: 40px 20px;
     text-align: center;
-    border-top: 2px solid rgba(187, 134, 252, 0.3);
-    width: 100%;
-    background: rgba(10, 10, 10, 0.6);
+    background: rgba(26, 26, 46, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(187, 134, 252, 0.2);
+    border-radius: 16px;
     position: relative;
     z-index: 10;
-    backdrop-filter: blur(10px);
+    margin: 40px auto;
+    max-width: 900px;
+    width: calc(100% - 40px);
+    overflow: hidden;
 }
 
 .social-section::before {
     content: '';
     position: absolute;
-    top: -1px;
+    top: 0;
     left: 0;
     right: 0;
     height: 1px;
@@ -774,7 +780,9 @@
     }
 
     .social-section {
-        padding: 35px 20px;
+        padding: 35px 15px;
+        margin: 35px auto;
+        width: calc(100% - 30px);
     }
 
     .social-label {
@@ -853,7 +861,9 @@
     }
 
     .social-section {
-        padding: 30px 15px;
+        padding: 30px 12px;
+        margin: 30px auto;
+        width: calc(100% - 24px);
     }
 
     .social-label {

@@ -365,8 +365,8 @@
 .about-footer {
   text-align: center;
   padding: 40px 20px;
-  background-color: #000000;
-  color: #9a9a9a;
+  color: #666;
+  border-top: 1px solid rgba(187, 134, 252, 0.1);
   position: relative;
   z-index: 1;
 }

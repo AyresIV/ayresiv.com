@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import LogoBubble from './LogoBubble';
 
-const Navigation = ({ isOptimizationsPage = false }) => {
+const Navigation = ({ isOptimizationsPage = false, hideNav = false }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -13,7 +13,7 @@ const Navigation = ({ isOptimizationsPage = false }) => {
     }
   };
 
-  if (!isOptimizationsPage) return null;
+  if (hideNav) return null;
 
   return (
     <nav className="nav">

@@ -83,7 +83,7 @@
 }
 
 .vouches-section {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
   padding: 60px 20px;
   min-height: 100vh;
   position: static;
@@ -152,9 +152,8 @@
 .vouches-footer {
   text-align: center;
   padding: 40px 20px;
-  background-color: #000000;
-  color: #9a9a9a;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #666;
+  border-top: 1px solid rgba(187, 134, 252, 0.1);
 }
 
 .vouches-footer p {

@@ -1,13 +1,11 @@
 :root {
-  background: linear-gradient(to right, #171420, #1b046e);
   --text: #cbcbcb;
   --accent-color: #bb86fc;
   --hover-color: #ff79c6;
 }
 
 body {
-  --bg: url('bgi.png'); /* Add this variable to set the background image */
-  background: var(--bg);
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
   color: var(--text);
 }
 

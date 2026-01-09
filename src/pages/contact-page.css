@@ -1,5 +1,27 @@
 /* Contact Page Styles */
 
+/* Ensure navbar is visible on contact page */
+nav {
+  position: relative;
+  z-index: 1000;
+}
+
+.page-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.page-particle {
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .contact-section {
   position: relative;
   min-height: 100vh;
@@ -157,21 +179,41 @@
 }
 
 .info-card {
+  position: relative;
   background: rgba(26, 26, 46, 0.4);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(187, 134, 252, 0.2);
   border-radius: 12px;
   padding: 24px;
   transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.info-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  pointer-events: none;
+  box-shadow: 0 8px 30px rgba(187, 134, 252, 0.15);
+  opacity: 0;
+  transition: opacity 240ms ease;
 }
 
 .info-card:hover {
   border-color: rgba(187, 134, 252, 0.5);
   background: rgba(26, 26, 46, 0.6);
-  transform: translateX(5px);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 14px 40px rgba(187, 134, 252, 0.3);
+}
+
+.info-card:hover::after {
+  opacity: 1;
 }
 
 .info-card h3 {
+  position: relative;
+  z-index: 1;
   color: #bb86fc;
   font-size: 1rem;
   text-transform: uppercase;
@@ -180,11 +222,15 @@
 }
 
 .info-card p {
+  position: relative;
+  z-index: 1;
   color: #cbcbcb;
   margin: 0;
 }
 
 .info-card a {
+  position: relative;
+  z-index: 1;
   color: #ff79c6;
   text-decoration: none;
   transition: color 0.3s ease;

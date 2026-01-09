@@ -7,11 +7,11 @@ import Optimizations from './pages/Optimizations';
 import About from './pages/About';
 import Partners from './pages/Partners';
 import Vouches from './pages/Vouches';
-import './globals.css';
 import './assets/styles/reset.css';
-import './assets/styles/theme.css';
 import './assets/styles/base.css';
-import './assets/styles/structure.css'; 
+import './assets/styles/theme.css';
+import './assets/styles/structure.css';
+import './globals.css'; 
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);

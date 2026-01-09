@@ -91,7 +91,7 @@
 }
 
 .nav__link {
-    color: #f4f4f9;
+    color: #fff;
     text-decoration: none;
     font-size: 0.95rem;
     font-weight: 600;
@@ -100,16 +100,15 @@
     border-radius: 8px;
     transition: all 0.3s ease;
     position: relative;
-    background: rgba(187, 134, 252, 0.15);
-    border: 1px solid rgba(187, 134, 252, 0.3);
+    background: linear-gradient(135deg, #bb86fc, #ff79c6);
+    border: none;
 }
 
 .nav__link:hover {
-    color: #f4f4f9;
-    background: rgba(187, 134, 252, 0.25);
-    border-color: rgba(187, 134, 252, 0.6);
+    color: #fff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(187, 134, 252, 0.2);
+    box-shadow: 0 8px 24px rgba(187, 134, 252, 0.4);
+    background: linear-gradient(135deg, #ff79c6, #bb86fc);
 }
 
 .nav__link::before {
@@ -145,7 +144,7 @@
     color: #fff !important;
     font-weight: 600;
     border-radius: 8px;
-    padding: 12px 24px !important;
+    padding: 12px 20px !important;
     transition: all 0.3s ease;
     display: inline-block;
     margin-top: 12px;

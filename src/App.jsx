@@ -15,7 +15,10 @@ import './assets/styles/structure.css';
 import './globals.css'; 
 
 function App() {
-  const [showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState(() => {
+    // Check if splash screen has been shown in this session
+    return !sessionStorage.getItem('splashShown');
+  });
   const [fadeOut, setFadeOut] = useState(false);
 
   React.useEffect(() => {
@@ -31,6 +34,8 @@ function App() {
     setFadeOut(true);
     setTimeout(() => {
       setShowSplash(false);
+      // Mark splash screen as shown for this session
+      sessionStorage.setItem('splashShown', 'true');
     }, 500);
   };
 

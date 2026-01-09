@@ -10,8 +10,8 @@ const Contact = () => {
   const [statusType, setStatusType] = useState(''); // 'success' or 'error'
 
   useEffect(() => {
-    // Initialize EmailJS with your public key
-    emailjs.init('r1CpVimPomZ2wZgpH');
+    // Initialize EmailJS with your public key from environment variables
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
   }, []);
 
   const handleSubmit = async (e) => {
@@ -29,8 +29,8 @@ const Contact = () => {
 
       // Send email using emailjs.send() with explicit parameters
       const result = await emailjs.send(
-        'service_b8fr3jm', // Your service ID
-        'template_uj0n9bj', // Your template ID
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           to_email: 'ayresivbiz@gmail.com',
           name: name,
@@ -38,7 +38,7 @@ const Contact = () => {
           title: title,
           message: message
         },
-        'r1CpVimPomZ2wZgpH' // Your public key
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
       console.log('Email sent successfully:', result);

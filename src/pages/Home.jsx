@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SocialIcons from '../components/SocialIcons'
-import ThemeToggle from '../components/ThemeToggle';
 import Footer from '../components/Footer';
 import logo from '../assets/images/mylogo.png';
 import '../assets/styles/base.css';
@@ -11,7 +10,6 @@ import './home-page.css';
 const Home = () => {
   return (
     <>
-      <ThemeToggle />
       <div className="landing home-landing">
         {/* Animated particles */}
         <div className="home-particles"></div>

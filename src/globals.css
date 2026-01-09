@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: 0 0% 6%;
+  --foreground: 240 10% 96%;
+  --card: 0 0% 0%;
+  --card-foreground: 240 10% 96%;
+  --primary: 271 81% 76%;
+  --primary-foreground: 240 10% 10%;
+  --secondary: 330 100% 74%;
+  --secondary-foreground: 240 10% 10%;
+  --muted: 240 6% 20%;
+  --muted-foreground: 240 5% 65%;
+  --accent: 271 81% 76%;
+  --accent-foreground: 240 10% 10%;
+  --border: 0 0% 100%;
+  --input: 0 0% 100%;
+  --ring: 271 81% 76%;
+  --radius: 0.625rem;
+}
+
+* {
+  border-color: hsl(var(--border) / 0.1);
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #0a0a0a;
+  color: hsl(var(--foreground));
+  margin: 0;
+  padding: 0;
+}
+
+/* Gradient Section */
+.gradient-section {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+}
+
+/* Neon Card Styles */
+.neon-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: hsl(var(--card));
+  padding: 1.5rem;
+  color: hsl(var(--card-foreground));
+  transition: all 300ms ease-out;
+  border: 1px solid transparent;
+  will-change: transform;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.neon-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 0.5rem;
+  pointer-events: none;
+  box-shadow: 0 8px 30px rgba(187, 134, 252, 0.15);
+  opacity: 0;
+  transition: opacity 240ms ease;
+}
+
+.neon-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 14px 40px rgba(255, 108, 218, 0.36);
+  border-color: rgba(255, 255, 255, 0.04);
+}
+
+.neon-card:hover::after {
+  opacity: 1;
+}
+
+/* Text Colors */
+.text-glow {
+  text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+}
+
+.text-primary {
+  color: hsl(var(--primary));
+}
+
+.text-secondary {
+  color: hsl(var(--secondary));
+}
+
+.bg-card {
+  background-color: hsl(var(--card));
+}
+
+.text-card-foreground {
+  color: hsl(var(--card-foreground));
+}
+
+.text-foreground {
+  color: hsl(var(--foreground));
+}
+
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground));
+}
+
+.border-border {
+  border-color: hsl(var(--border));
+}

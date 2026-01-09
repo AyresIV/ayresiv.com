@@ -1,0 +1,202 @@
+/* Vouches Page */
+
+/* Animated particle effects */
+.page-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 15% 30%, rgba(187, 134, 252, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 85% 70%, rgba(255, 121, 198, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 15%, rgba(187, 134, 252, 0.08) 0%, transparent 35%);
+    pointer-events: none;
+    z-index: 0;
+    animation: particleShift 25s ease-in-out infinite;
+}
+
+@keyframes particleShift {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+.page-particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #bb86fc, #ff79c6);
+    box-shadow: 0 0 10px rgba(187, 134, 252, 0.6);
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+.page-particle-1 { top: 10%; left: 15%; animation: floatParticle1 15s ease-in-out infinite; }
+.page-particle-2 { top: 60%; right: 10%; animation: floatParticle2 18s ease-in-out infinite; }
+.page-particle-3 { bottom: 20%; left: 50%; animation: floatParticle3 20s ease-in-out infinite; }
+.page-particle-4 { top: 25%; left: 80%; width: 5px; height: 5px; animation: floatParticle4 16s ease-in-out infinite; }
+.page-particle-5 { top: 45%; left: 25%; width: 7px; height: 7px; animation: floatParticle5 19s ease-in-out infinite; }
+.page-particle-6 { top: 75%; right: 30%; width: 6px; height: 6px; animation: floatParticle6 17s ease-in-out infinite; }
+.page-particle-7 { top: 5%; right: 40%; width: 5px; height: 5px; animation: floatParticle7 21s ease-in-out infinite; }
+.page-particle-8 { top: 55%; right: 5%; width: 6px; height: 6px; animation: floatParticle8 18s ease-in-out infinite; }
+
+@keyframes floatParticle1 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    50% { transform: translate(-40px, 50px) scale(1.1); opacity: 0.5; }
+}
+
+@keyframes floatParticle2 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    50% { transform: translate(50px, -40px) scale(0.9); opacity: 0.8; }
+}
+
+@keyframes floatParticle3 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    50% { transform: translate(-60px, -30px) scale(1.2); opacity: 0.5; }
+}
+
+@keyframes floatParticle4 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    50% { transform: translate(-40px, 50px) scale(1.1); opacity: 0.5; }
+}
+
+@keyframes floatParticle5 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    50% { transform: translate(50px, -40px) scale(0.9); opacity: 0.8; }
+}
+
+@keyframes floatParticle6 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    50% { transform: translate(-60px, -30px) scale(1.2); opacity: 0.5; }
+}
+
+@keyframes floatParticle7 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    50% { transform: translate(40px, 60px) scale(0.8); opacity: 0.8; }
+}
+
+@keyframes floatParticle8 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    50% { transform: translate(-50px, 20px) scale(1.1); opacity: 0.5; }
+}
+
+.vouches-section {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%);
+  padding: 60px 20px;
+  min-height: 100vh;
+  position: static;
+  z-index: 1;
+}
+
+.vouches-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.vouches-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.vouches-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #bb86fc;
+  text-shadow: 0 0 20px rgba(187, 134, 252, 0.5);
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.vouches-divider {
+  height: 4px;
+  width: 100px;
+  background: linear-gradient(90deg, #bb86fc, #ff79c6);
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+.vouches-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.vouch-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.vouch-text {
+  color: #f4f4f9;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+  flex-grow: 1;
+}
+
+.vouch-client {
+  color: #ff79c6;
+  font-size: 0.95rem;
+  font-style: italic;
+  margin: 0;
+  margin-top: auto;
+  text-align: right;
+}
+
+.vouches-footer {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #000000;
+  color: #9a9a9a;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vouches-footer p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .vouches-title {
+    font-size: 2.5rem;
+  }
+
+  .vouches-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .vouch-text {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .vouches-section {
+    padding: 40px 15px;
+  }
+
+  .vouches-title {
+    font-size: 2rem;
+  }
+
+  .vouches-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .vouch-text {
+    font-size: 0.9rem;
+  }
+
+  .vouch-client {
+    font-size: 0.85rem;
+  }
+}

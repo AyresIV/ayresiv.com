@@ -1,0 +1,366 @@
+/* Optimizations Page */
+
+/* Animated particle effects */
+.page-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%),
+                radial-gradient(circle at 15% 30%, rgba(187, 134, 252, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 85% 70%, rgba(255, 121, 198, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 15%, rgba(187, 134, 252, 0.08) 0%, transparent 35%);
+    pointer-events: none;
+    z-index: 0;
+    animation: particleShift 25s ease-in-out infinite;
+}
+
+@keyframes particleShift {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+.page-particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #bb86fc, #ff79c6);
+    box-shadow: 0 0 10px rgba(187, 134, 252, 0.6);
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform, opacity;
+    transform: translateZ(0);
+}
+
+.page-particle-1 { top: 10%; left: 15%; animation: floatParticle1 15s ease-in-out infinite; }
+.page-particle-2 { top: 60%; right: 10%; animation: floatParticle2 18s ease-in-out infinite; }
+.page-particle-3 { bottom: 20%; left: 50%; animation: floatParticle3 20s ease-in-out infinite; }
+.page-particle-4 { top: 25%; left: 80%; width: 5px; height: 5px; animation: floatParticle4 16s ease-in-out infinite; }
+.page-particle-5 { top: 45%; left: 25%; width: 7px; height: 7px; animation: floatParticle5 19s ease-in-out infinite; }
+.page-particle-6 { top: 75%; right: 30%; width: 6px; height: 6px; animation: floatParticle6 17s ease-in-out infinite; }
+.page-particle-7 { top: 5%; right: 40%; width: 5px; height: 5px; animation: floatParticle7 21s ease-in-out infinite; }
+.page-particle-8 { top: 55%; right: 5%; width: 6px; height: 6px; animation: floatParticle8 18s ease-in-out infinite; }
+
+@keyframes floatParticle1 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    50% { transform: translate(-40px, 50px) scale(1.1); opacity: 0.5; }
+}
+
+@keyframes floatParticle2 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    50% { transform: translate(50px, -40px) scale(0.9); opacity: 0.8; }
+}
+
+@keyframes floatParticle3 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    50% { transform: translate(-60px, -30px) scale(1.2); opacity: 0.5; }
+}
+
+@keyframes floatParticle4 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    50% { transform: translate(-40px, 50px) scale(1.1); opacity: 0.5; }
+}
+
+@keyframes floatParticle5 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    50% { transform: translate(50px, -40px) scale(0.9); opacity: 0.8; }
+}
+
+@keyframes floatParticle6 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    50% { transform: translate(-60px, -30px) scale(1.2); opacity: 0.5; }
+}
+
+@keyframes floatParticle7 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+    50% { transform: translate(40px, 60px) scale(0.8); opacity: 0.8; }
+}
+
+@keyframes floatParticle8 {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+    50% { transform: translate(-50px, 20px) scale(1.1); opacity: 0.5; }
+}
+
+.optimizations-hero {
+  background: transparent;
+  padding: 100px 20px;
+  text-align: center;
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.optimizations-hero-content {
+  max-width: 900px;
+}
+
+.optimizations-hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #bb86fc;
+  text-shadow: 0 0 20px rgba(187, 134, 252, 0.5);
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+}
+
+.optimizations-hero-subtitle {
+  font-size: 1.5rem;
+  color: #ff79c6;
+  margin: 0 0 15px 0;
+}
+
+.optimizations-hero-guarantee {
+  font-size: 1.1rem;
+  color: #f4f4f9;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* Selected Package Section */
+.optimizations-selected {
+  background: #0a0a0a;
+  padding: 40px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.optimizations-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.selected-package {
+  background: linear-gradient(135deg, rgba(187, 134, 252, 0.1) 0%, rgba(255, 121, 198, 0.05) 100%);
+  border: 1px solid rgba(187, 134, 252, 0.3);
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+}
+
+.selected-placeholder {
+  text-align: center;
+  padding: 40px;
+  color: #9a9a9a;
+  font-size: 1.1rem;
+}
+
+.selected-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #bb86fc;
+  margin: 0 0 15px 0;
+}
+
+.selected-price {
+  font-size: 1.5rem;
+  color: #ff79c6;
+  margin: 0 0 20px 0;
+  font-weight: 600;
+}
+
+.selected-description {
+  color: #f4f4f9;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 30px 0;
+}
+
+.discord-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #5865f2 0%, #4752c4 100%);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 300ms ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.discord-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(88, 101, 242, 0.3);
+}
+
+/* Optimization Sections */
+.optimizations-section,
+.bundles-section {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+  padding: 80px 20px;
+}
+
+.bundles-section {
+  background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%);
+}
+
+.optimizations-section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #bb86fc;
+  text-shadow: 0 0 20px rgba(187, 134, 252, 0.3);
+  text-align: center;
+  margin: 0 0 50px 0;
+}
+
+.optimizations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  width: 100%;
+}
+
+.package-content,
+.bundle-content {
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 300ms ease;
+}
+
+.package-title,
+.bundle-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #bb86fc;
+  margin: 0 0 15px 0;
+}
+
+.package-price,
+.bundle-price {
+  font-size: 1.4rem;
+  color: #ff79c6;
+  font-weight: 700;
+  margin: 0 0 15px 0;
+}
+
+.package-description,
+.bundle-description {
+  color: #f4f4f9;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.highlight-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff79c6 0%, #bb86fc 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+
+.bundle-highlight {
+  border: 2px solid #ff79c6 !important;
+  background-color: rgba(255, 121, 198, 0.05) !important;
+}
+
+/* Footer */
+.optimizations-footer {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #000000;
+  color: #9a9a9a;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.optimizations-footer p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .optimizations-hero-title {
+    font-size: 2.5rem;
+  }
+
+  .optimizations-hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .optimizations-section,
+  .bundles-section {
+    padding: 60px 20px;
+  }
+
+  .optimizations-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+
+  .selected-package {
+    padding: 30px 20px;
+  }
+
+  .selected-title {
+    font-size: 1.5rem;
+  }
+
+  .package-title,
+  .bundle-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .optimizations-hero {
+    padding: 60px 15px;
+  }
+
+  .optimizations-hero-title {
+    font-size: 1.8rem;
+  }
+
+  .optimizations-hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .optimizations-section,
+  .bundles-section {
+    padding: 40px 15px;
+  }
+
+  .optimizations-section-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+  }
+
+  .optimizations-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .selected-package {
+    padding: 20px 15px;
+  }
+
+  .selected-title {
+    font-size: 1.3rem;
+  }
+
+  .selected-price {
+    font-size: 1.2rem;
+  }
+
+  .selected-description {
+    font-size: 0.9rem;
+  }
+
+  .package-description,
+  .bundle-description {
+    font-size: 0.85rem;
+  }
+}

@@ -22,7 +22,7 @@ const Contact = () => {
     try {
       const result = await emailjs.sendForm(
         'service_b8fr3jm', // Your service ID
-        'template_4aezwqe', // Your template ID
+        'template_xre5v4d', // Your template ID
         formRef.current,
         'r1CpVimPomZ2wZgpH' // Your public key
       );

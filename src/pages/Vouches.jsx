@@ -15,7 +15,13 @@ const Vouches = () => {
     { text: "Big vouch , he's always ready to answer questions and help , pc ran 10 times better after the optimization , actually the best out there.", client: "Shy" },
     { text: "BIG VOUCHER FROM ME IF U WANT TO BECOME AS GOOD AS ME THEN GO GET AN OPT BY AYRESS!!!!!!!!!!", client: "AlexApe" },
     { text: "Ayres does great work. Decided I wanted to swap over to windows 11. Played on that for about a week. Then had Ayres optimize my pc. Pc runs better than ever and my games run super smooth. 10/10 recommend.", client: "Silent" },
-    { text: "He took my PC from barely booting properly to running at consistently at 200 fps at 4k so I mean I guess hes The Best...", client: "Comfy" }
+    { text: "He took my PC from barely booting properly to running at consistently at 200 fps at 4k so I mean I guess hes The Best...", client: "Comfy" },
+    { text: "Very insightful, informative, and no bs. If your not using Ayres your kind of throwing. Thank you very much for the service.", client: "Anthrax1977" },
+    { text: "I do have to say Ayres is the 🐐 quick, reliable guy and straight to the point. 10/10 would recommend again", client: "Poison" },
+    { text: "Just had a great experience! 10/10 communication, service, flexibility, and support. Will absolutely recommend to everyone I know and will 100% continue to rely on Ayres for optimization services!", client: "Azrael" },
+    { text: "A huge vouch for ayres. He's extremely knowledgeable and patient dealing with someone not pc savvy 😅. I thought my pc was pretty good, but the difference after the optimization is night and day. Worth every penny. Highly recommended 10000%. Thanks again bro!", client: "ImJustABlueBerry" },
+    { text: "100/10 Ayres is amazing both fast and very professional and the system is already feeling so much better would highly recommend you don't wanna miss out on this experience", client: "Meliodas" },
+    { text: "just got my new optimized by the goat @AyresIV once again❤️ he honestly never fails and always shows massive improvements and is the only person i would let tweak my pc", client: "S1ght" }
   ];
 
   return (

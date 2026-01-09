@@ -17,6 +17,15 @@ function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
 
+  React.useEffect(() => {
+    // Handle GitHub Pages 404 redirect
+    const redirect = sessionStorage.redirect;
+    if (redirect && redirect !== '/') {
+      delete sessionStorage.redirect;
+      window.history.replaceState(null, null, redirect);
+    }
+  }, []);
+
   const handleEnter = () => {
     setFadeOut(true);
     setTimeout(() => {

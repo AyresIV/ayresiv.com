@@ -36,6 +36,9 @@ const Navigation = ({ isOptimizationsPage = false }) => {
         <li className="nav__item">
           <Link to="/partners" className="nav__link" onClick={closeMenu}>Partners</Link>
         </li>
+        <li className="nav__item">
+          <Link to="/contact" className="nav__link" onClick={closeMenu}>Contact</Link>
+        </li>
       </ul>
       <a href="https://discord.gg/spartagg" target="_blank" rel="noopener noreferrer" className="nav__discord" title="Join our Discord">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

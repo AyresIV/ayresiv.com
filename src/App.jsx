@@ -7,6 +7,7 @@ import Optimizations from './pages/Optimizations';
 import About from './pages/About';
 import Partners from './pages/Partners';
 import Vouches from './pages/Vouches';
+import Contact from './pages/Contact';
 import './assets/styles/reset.css';
 import './assets/styles/base.css';
 import './assets/styles/theme.css';
@@ -47,6 +48,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/partners" element={<Partners />} />
             <Route path="/vouches" element={<Vouches />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         )}
       </Router>

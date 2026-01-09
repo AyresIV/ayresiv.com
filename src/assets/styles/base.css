@@ -209,7 +209,7 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: rgba(187, 134, 252, 0.1);
+    background: linear-gradient(135deg, rgba(187, 134, 252, 0.2), rgba(255, 121, 198, 0.2));
     color: #bb86fc;
     transition: all 0.3s ease;
     text-decoration: none;
@@ -217,7 +217,7 @@ body {
 }
 
 .social-icon:hover {
-    background: rgba(187, 134, 252, 0.2);
+    background: linear-gradient(135deg, rgba(187, 134, 252, 0.4), rgba(255, 121, 198, 0.4));
     color: #ff79c6;
     border-color: #ff79c6;
     transform: translateY(-6px) scale(1.1);
@@ -233,15 +233,15 @@ body {
 
 .social-icon.contact-icon {
     background: linear-gradient(135deg, rgba(187, 134, 252, 0.2), rgba(255, 121, 198, 0.2));
-    color: #ff79c6;
-    border-color: #ff79c6;
+    color: #bb86fc;
+    border-color: rgba(187, 134, 252, 0.3);
 }
 
 .social-icon.contact-icon:hover {
     background: linear-gradient(135deg, rgba(187, 134, 252, 0.4), rgba(255, 121, 198, 0.4));
-    color: #bb86fc;
-    border-color: #bb86fc;
-    box-shadow: 0 8px 30px rgba(255, 121, 198, 0.4);
+    color: #ff79c6;
+    border-color: #ff79c6;
+    box-shadow: 0 8px 30px rgba(187, 134, 252, 0.3);
 }
 
 /* Keep old styles for backwards compatibility */

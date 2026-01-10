@@ -5,34 +5,21 @@ import '../assets/styles/splash.css';
 const SplashScreen = ({ onEnter }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [isExiting, setIsExiting] = useState(false);
+  const [lightningKey, setLightningKey] = useState(0);
 
   const handleClick = (e) => {
     setIsExiting(true);
-    
-    // Launch logo rocket
-    const splashIcon = document.querySelector('.splash-icon');
-    if (splashIcon) {
-      splashIcon.style.animation = 'logoRocketLaunch 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
-    }
-    
-    // Trigger zipper unzip effect
-    const splashContent = document.querySelector('.splash-content');
-    if (splashContent) {
-      splashContent.style.animation = 'zipperUnzip 1.5s ease-in-out forwards';
-    }
-
-    const splashBg = document.querySelector('.splash-background');
-    if (splashBg) {
-      splashBg.style.animation = 'fadeOutWithZipper 1.5s ease-in-out forwards';
-    }
-    
-    setTimeout(onEnter, 1500);
+    setLightningKey(prev => prev + 1); // Force re-render of lightning element
+    onEnter();
   };
 
 
 
   return (
     <div className="splash-screen-epic">
+      {/* Lightning bolt element */}
+      <div key={lightningKey} className="lightning-bolt-element"></div>
+      
       {/* Animated background with Greek mythology theme */}
       <div className="splash-background">
         <div className="splash-gradient"></div>

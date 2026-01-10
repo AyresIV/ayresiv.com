@@ -34,17 +34,18 @@ function AppRoutes() {
 
   const handleEnter = () => {
     setFadeOut(true);
+    
     setTimeout(() => {
       setShowSplash(false);
       // Mark splash screen as shown for this session
       sessionStorage.setItem('splashShown', 'true');
-    }, 500);
+    }, 1000);
   };
 
   return (
     <>
       {showSplash ? (
-        <div className={fadeOut ? 'splash-screen fade-zoom-out' : ''}>
+        <div className={`splash-screen-wrapper ${fadeOut ? 'fade-out' : ''}`}>
           <SplashScreen onEnter={handleEnter} />
         </div>
       ) : (

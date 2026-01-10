@@ -1,5 +1,229 @@
 /* Home Page Styling - Epic Neon Design */
 
+/* Home page lightning bolt entrance */
+.home-lightning {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(100, 200, 255, 0.8) 10%,
+        rgba(100, 200, 255, 0) 30%,
+        transparent 50%
+    );
+    box-shadow: 
+        -2px 0 8px rgba(100, 200, 255, 0.6),
+        2px 0 8px rgba(100, 200, 255, 0.6),
+        0 0 20px rgba(100, 200, 255, 0.4),
+        0 0 40px rgba(187, 134, 252, 0.3);
+    animation: lightningBolt 0.6s ease-out forwards;
+    z-index: 50;
+    pointer-events: none;
+    transform: translateZ(0);
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+}
+
+@keyframes lightningBolt {
+    0% {
+        opacity: 0;
+        transform: scaleY(0) translateZ(0);
+        transform-origin: top center;
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: scaleY(1.5) translateZ(0);
+    }
+}
+
+/* Entrance animation state */
+.home-landing.entering {
+    animation: homePageFadeIn 0.8s ease-out forwards;
+    will-change: opacity;
+}
+
+@keyframes homePageFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateZ(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+
+/* Hero content entrance animation */
+.home-landing.entering .home-hero {
+    animation: heroContentFadeIn 1s ease-out 0.2s both;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+}
+
+@keyframes heroContentFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) translateZ(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
+    }
+}
+
+/* Logo bubble entrance animation */
+.home-landing.entering .logo-bubble {
+    animation: logoBubbleSlideIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+}
+
+@keyframes logoBubbleSlideIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-20px) translateZ(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0) translateZ(0);
+    }
+}
+
+/* Hero title entrance animation */
+.home-landing.entering .hero-title {
+    animation: titleSlideDown 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.4s both;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+}
+
+@keyframes titleSlideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px) translateZ(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
+    }
+}
+
+/* Subtitle entrance animation */
+.home-landing.entering .hero-subtitle {
+    animation: subtitleFadeIn 0.8s ease-out 0.5s both;
+    will-change: opacity;
+    backface-visibility: hidden;
+}
+
+@keyframes subtitleFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateZ(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateZ(0);
+    }
+}
+
+/* Description entrance animation */
+.home-landing.entering .hero-description {
+    animation: descriptionFadeIn 0.8s ease-out 0.6s both;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+}
+
+@keyframes descriptionFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) translateZ(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
+    }
+}
+
+/* CTA buttons entrance animation */
+.home-landing.entering .hero-cta {
+    animation: ctaFadeIn 0.8s ease-out 0.7s both;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+}
+
+@keyframes ctaFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(15px) translateZ(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
+    }
+}
+
+/* Features entrance animation */
+.home-landing.entering .hero-features {
+    animation: featuresFadeIn 0.8s ease-out 0.8s both;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+}
+
+@keyframes featuresFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) translateZ(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
+    }
+}
+
+/* Social section entrance animation */
+.home-landing.entering .social-section {
+    animation: socialFadeIn 0.8s ease-out 0.9s both;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+}
+
+@keyframes socialFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) translateZ(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
+    }
+}
+
+/* Particles entrance animation */
+.home-landing.entering .home-particle {
+    animation: particleFadeIn 1s ease-out 0.3s both;
+    will-change: opacity;
+    backface-visibility: hidden;
+}
+
+@keyframes particleFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateZ(0);
+    }
+    100% {
+        opacity: 0.8;
+        transform: translateZ(0);
+    }
+}
+
 /* Background with epic gradient and decorative elements */
 .home-landing {
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%);

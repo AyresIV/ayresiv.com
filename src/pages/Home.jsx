@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SocialIcons from '../components/SocialIcons'
 import Footer from '../components/Footer';
@@ -8,9 +8,18 @@ import '../assets/styles/structure.css';
 import './home-page.css';
 
 const Home = () => {
+  const [isEntering, setIsEntering] = useState(true);
+
+  useEffect(() => {
+    // Trigger entrance animations when component mounts
+    setIsEntering(true);
+  }, []);
+
   return (
     <>
-      <div className="landing home-landing">
+      <div className={`landing home-landing ${isEntering ? 'entering' : ''}`}>
+        {/* Lightning bolt element for entrance */}
+        {isEntering && <div className="lightning-bolt-element home-lightning"></div>}
         {/* Animated particles */}
         <div className="home-particles"></div>
         <div className="home-particle home-particle-1"></div>

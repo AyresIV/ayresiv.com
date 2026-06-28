@@ -7,6 +7,7 @@ import './partners-page.css';
 // Import all partner images
 import WallahImg from '../assets/images/Wallah.jpg';
 import BennyImg from '../assets/images/Benny.jpg';
+import KruzerImg from '../assets/images/Kruzer.png';
 import BogImg from '../assets/images/Bog.jpg';
 import DiffizzleImg from '../assets/images/Diffizzle.jpg';
 import OmletImg from '../assets/images/Omlet.png';
@@ -30,6 +31,7 @@ const Partners = () => {
   const partners = [
     { name: "Wallah", image: WallahImg, twitter: "https://x.com/saywallahbruhh", twitch: "https://www.twitch.tv/wallah" },
     { name: "Benny", image: BennyImg, twitter: "https://x.com/ShmurdaBenny", twitch: "https://www.twitch.tv/benny" },
+    { name: "Kruzer", image: KruzerImg, twitter: "https://x.com/kruzer", twitch: "https://www.twitch.tv/Kruzer" },
     { name: "BogOnMyDog", image: BogImg, twitter: "https://x.com/BogOnMyDog", twitch: "https://www.twitch.tv/bogonmydog" },
     { name: "Diffizzle", image: DiffizzleImg, twitter: "https://x.com/TooDiffizzle", twitch: "https://www.twitch.tv/diffizzle" },
     { name: "Omlet", image: OmletImg, twitter: "https://x.com/iomlet", twitch: "https://www.twitch.tv/omlet" },

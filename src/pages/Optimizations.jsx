@@ -1,9 +1,13 @@
 import React, { useState, useRef } from 'react';
 import Navigation from '../components/Navigation';
 import NeonCard from '../components/NeonCard';
+import Footer from '../components/Footer';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import './optimizations-page.css';
 
 const Optimizations = () => {
+  useDocumentTitle('Plans & Bundles — AyresIV');
+
   const [selectedPackage, setSelectedPackage] = useState(null);
   const selectedPackageRef = useRef(null);
 
@@ -80,7 +84,7 @@ const Optimizations = () => {
           <h2 className="optimizations-section-title">Optimization Packages</h2>
           <div className="optimizations-grid">
             {packages.map((pkg, idx) => (
-              <NeonCard key={idx}>
+              <NeonCard key={idx} index={idx}>
                 <div 
                   className="package-content"
                   onClick={() => handlePackageClick(pkg.title, pkg.price, pkg.description)}
@@ -100,7 +104,7 @@ const Optimizations = () => {
           <h2 className="optimizations-section-title">Bundle Deals</h2>
           <div className="optimizations-grid">
             {bundles.map((bundle, idx) => (
-              <NeonCard key={idx}>
+              <NeonCard key={idx} index={idx}>
                 <div 
                   className={`bundle-content ${bundle.highlight ? 'bundle-highlight' : ''}`}
                   onClick={() => handlePackageClick(bundle.title, bundle.price, bundle.description)}
@@ -116,9 +120,7 @@ const Optimizations = () => {
         </div>
       </section>
 
-      <footer className="optimizations-footer">
-        <p>&copy; 2026 Ayres Optimizations. All rights reserved.</p>
-      </footer>
+      <Footer />
     </>
   );
 };

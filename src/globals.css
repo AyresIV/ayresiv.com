@@ -31,6 +31,13 @@ body {
   padding: 0;
 }
 
+/* Prevent any horizontal scroll from off-screen particle animations */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
 /* Gradient Section */
 .gradient-section {
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
@@ -44,10 +51,45 @@ body {
   background-color: hsl(var(--card));
   padding: 1.5rem;
   color: hsl(var(--card-foreground));
-  transition: all 300ms ease-out;
   border: 1px solid transparent;
-  will-change: transform;
+  will-change: transform, opacity;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Hidden until scrolled into view (see .is-visible) */
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.55s ease-out,
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 300ms ease-out,
+              border-color 300ms ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* Scroll-reveal target state */
+.neon-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cursor-following neon glow */
+.neon-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%),
+              rgba(187, 134, 252, 0.22),
+              rgba(255, 121, 198, 0.08) 40%,
+              transparent 65%);
+  opacity: 0;
+  transition: opacity 250ms ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Keep card content above the glow layer */
+.neon-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .neon-card::after {
@@ -61,7 +103,7 @@ body {
   transition: opacity 240ms ease;
 }
 
-.neon-card:hover {
+.neon-card.is-visible:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 14px 40px rgba(255, 108, 218, 0.36);
   border-color: rgba(255, 255, 255, 0.04);
@@ -69,6 +111,158 @@ body {
 
 .neon-card:hover::after {
   opacity: 1;
+}
+
+.neon-card:hover::before {
+  opacity: 1;
+}
+
+/* ===== Route transition (page-to-page cross fade) ===== */
+@keyframes routeFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.route-fade {
+  animation: routeFade 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ===== Sticky, translucent, blurred navbar ===== */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(10, 10, 10, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ===== Neon themed scrollbar ===== */
+html {
+  scrollbar-color: #bb86fc #0a0a0a;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #bb86fc, #ff79c6);
+  border-radius: 10px;
+  border: 3px solid #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #ff79c6, #bb86fc);
+}
+
+/* ===== Visible keyboard focus styles ===== */
+a:focus-visible,
+button:focus-visible,
+.cta-button:focus-visible,
+.nav__link:focus-visible,
+.splash-enter-button:focus-visible,
+.partner-link:focus-visible {
+  outline: 2px solid #bb86fc;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ===== Brand logo: keep the wide (3:2) mark's ratio, drop the bubble box ===== */
+.logo-bubble {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.hero-logo {
+  object-fit: contain;
+  height: auto;
+}
+
+.nav__logo .logo-bubble {
+  width: auto;
+  height: auto;
+}
+
+.nav__logo .hero-logo {
+  width: 46px;
+  height: auto;
+}
+
+/* ===== Active nav link ===== */
+.nav__link.active {
+  color: #ff79c6;
+  text-shadow: 0 0 12px rgba(255, 121, 198, 0.6);
+}
+
+.nav__link.active::after {
+  width: 100%;
+}
+
+/* ===== Unified site footer ===== */
+.site-footer {
+  text-align: center;
+  padding: 30px 20px;
+  border-top: 1px solid rgba(187, 134, 252, 0.2);
+  background: rgba(10, 10, 10, 0.6);
+  position: relative;
+  z-index: 10;
+}
+
+.site-footer p {
+  margin: 0;
+  color: #bb86fc;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  opacity: 0.85;
+}
+
+/* ===== Back-to-top floating button ===== */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0a0a0a;
+  background: linear-gradient(135deg, #bb86fc, #ff79c6);
+  box-shadow: 0 8px 24px rgba(187, 134, 252, 0.45);
+  opacity: 0;
+  transform: translateY(20px) scale(0.8);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1100;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  box-shadow: 0 12px 32px rgba(255, 121, 198, 0.6);
+  transform: translateY(-3px) scale(1.05);
 }
 
 /* Text Colors */
@@ -102,4 +296,37 @@ body {
 
 .border-border {
   border-color: hsl(var(--border));
+}
+
+/* ===== Mobile hardening (phones / small tablets) ===== */
+@media (max-width: 767px) {
+  /* Fix the mobile nav: symmetric padding, hamburger left & Discord right,
+     and allow the dropdown menu to wrap onto its own full-width row. */
+  .nav {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 14px 18px;
+    gap: 12px;
+  }
+
+  .mobile-menu-toggle {
+    order: 0;
+  }
+
+  .nav__discord {
+    order: 1;
+    margin: 0;
+  }
+
+  .nav__list {
+    order: 2;
+  }
+
+  /* Smaller, edge-friendlier back-to-top button on phones */
+  .back-to-top {
+    bottom: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+  }
 }

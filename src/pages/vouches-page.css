@@ -129,37 +129,70 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: space-between;
+}
+
+.vouch-stars {
+  color: #ffb74d;
+  font-size: 1.05rem;
+  letter-spacing: 3px;
+  margin-bottom: 14px;
+  text-shadow: 0 0 12px rgba(255, 183, 77, 0.5);
 }
 
 .vouch-text {
   color: #f4f4f9;
   font-size: 1rem;
   line-height: 1.6;
-  margin: 0 0 20px 0;
+  margin: 0 0 22px 0;
   flex-grow: 1;
+  position: relative;
+}
+
+.vouch-text::before {
+  content: '\201C';
+  color: rgba(187, 134, 252, 0.35);
+  font-size: 3rem;
+  line-height: 0;
+  position: absolute;
+  left: -6px;
+  top: 14px;
+  font-family: Georgia, serif;
+}
+
+.vouch-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(187, 134, 252, 0.15);
+}
+
+.vouch-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(187, 134, 252, 0.5);
+  box-shadow: 0 0 14px rgba(187, 134, 252, 0.35);
+  flex-shrink: 0;
+}
+
+.vouch-avatar--initial {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #0a0a0a;
+  background: linear-gradient(135deg, #bb86fc, #ff79c6);
 }
 
 .vouch-client {
   color: #ff79c6;
   font-size: 0.95rem;
-  font-style: italic;
+  font-weight: 600;
   margin: 0;
-  margin-top: auto;
-  text-align: right;
-}
-
-.vouches-footer {
-  text-align: center;
-  padding: 40px 20px;
-  background-color: #000000;
-  color: #9a9a9a;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.vouches-footer p {
-  margin: 0;
-  font-size: 0.95rem;
 }
 
 /* Responsive */

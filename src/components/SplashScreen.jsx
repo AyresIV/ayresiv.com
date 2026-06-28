@@ -3,36 +3,18 @@ import logo from '../assets/images/mylogo.png';
 import '../assets/styles/splash.css';
 
 const SplashScreen = ({ onEnter }) => {
-  const [isVisible, setIsVisible] = useState(true);
   const [isExiting, setIsExiting] = useState(false);
 
-  const handleClick = (e) => {
+  const handleClick = () => {
+    if (isExiting) return;
+    // Drive the whole exit from a single class so every element eases out in
+    // sync (no per-element inline animation strings, no janky clip-path).
     setIsExiting(true);
-    
-    // Launch logo rocket
-    const splashIcon = document.querySelector('.splash-icon');
-    if (splashIcon) {
-      splashIcon.style.animation = 'logoRocketLaunch 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
-    }
-    
-    // Trigger zipper unzip effect
-    const splashContent = document.querySelector('.splash-content');
-    if (splashContent) {
-      splashContent.style.animation = 'zipperUnzip 1.5s ease-in-out forwards';
-    }
-
-    const splashBg = document.querySelector('.splash-background');
-    if (splashBg) {
-      splashBg.style.animation = 'fadeOutWithZipper 1.5s ease-in-out forwards';
-    }
-    
-    setTimeout(onEnter, 1500);
+    setTimeout(onEnter, 1000);
   };
 
-
-
   return (
-    <div className="splash-screen-epic">
+    <div className={`splash-screen-epic${isExiting ? ' is-exiting' : ''}`}>
       {/* Animated background with Greek mythology theme */}
       <div className="splash-background">
         <div className="splash-gradient"></div>

@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import SocialIcons from '../components/SocialIcons'
 import Footer from '../components/Footer';
+import CountUp from '../components/CountUp';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import logo from '../assets/images/mylogo.png';
 import '../assets/styles/base.css';
 import '../assets/styles/structure.css';
 import './home-page.css';
 
 const Home = () => {
+  useDocumentTitle('AyresIV — PC Optimization & Performance Specialist');
+
   return (
     <>
       <div className="landing home-landing">
@@ -65,6 +69,21 @@ const Home = () => {
                 <div className="feature-icon">📊</div>
                 <h3>Data Driven</h3>
                 <p>7+ years of expertise</p>
+              </div>
+            </div>
+
+            <div className="home-stats">
+              <div className="stat">
+                <span className="stat-number"><CountUp end={1000} suffix="+" /></span>
+                <span className="stat-label">PCs Optimized</span>
+              </div>
+              <div className="stat">
+                <span className="stat-number"><CountUp end={7} suffix="+" /></span>
+                <span className="stat-label">Years Experience</span>
+              </div>
+              <div className="stat">
+                <span className="stat-number"><CountUp end={15} /></span>
+                <span className="stat-label">Trusted Partners</span>
               </div>
             </div>
           </div>

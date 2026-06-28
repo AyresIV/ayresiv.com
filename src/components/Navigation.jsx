@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import LogoBubble from './LogoBubble';
 
 const Navigation = ({ isOptimizationsPage = false }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => window.matchMedia('(max-width: 768px)').matches);
+
+  // Track viewport size so the hamburger toggle stays correct on resize.
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)');
+    const handleChange = (e) => {
+      setIsMobile(e.matches);
+      if (!e.matches) setIsMenuOpen(false); // collapse menu when growing to desktop
+    };
+    mq.addEventListener('change', handleChange);
+    return () => mq.removeEventListener('change', handleChange);
+  }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const closeMenu = () => {
-    if (window.innerWidth <= 768) {
+    if (isMobile) {
       setIsMenuOpen(false);
     }
   };
@@ -20,21 +32,21 @@ const Navigation = ({ isOptimizationsPage = false }) => {
       <div className="nav__logo">
         <LogoBubble />
       </div>
-      <button className="mobile-menu-toggle" onClick={toggleMenu} style={{ display: window.innerWidth > 768 ? 'none' : 'block' }}>
+      <button className="mobile-menu-toggle" onClick={toggleMenu} style={{ display: isMobile ? 'block' : 'none' }}>
         {isMenuOpen ? '✕' : '☰'}
       </button>
       <ul className={`nav__list ${isMenuOpen ? 'active' : ''}`}>
         <li className="nav__item">
-          <Link to="/about" className="nav__link" onClick={closeMenu}>About</Link>
+          <NavLink to="/about" className="nav__link" onClick={closeMenu}>About</NavLink>
         </li>
         <li className="nav__item">
-          <Link to="/optimizations" className="nav__link" onClick={closeMenu}>Plans and Bundles</Link>
+          <NavLink to="/optimizations" className="nav__link" onClick={closeMenu}>Plans and Bundles</NavLink>
         </li>
         <li className="nav__item">
-          <Link to="/vouches" className="nav__link" onClick={closeMenu}>Vouches</Link>
+          <NavLink to="/vouches" className="nav__link" onClick={closeMenu}>Vouches</NavLink>
         </li>
         <li className="nav__item">
-          <Link to="/partners" className="nav__link" onClick={closeMenu}>Partners</Link>
+          <NavLink to="/partners" className="nav__link" onClick={closeMenu}>Partners</NavLink>
         </li>
       </ul>
       <a href="https://discord.gg/spartagg" target="_blank" rel="noopener noreferrer" className="nav__discord" title="Join our Discord">

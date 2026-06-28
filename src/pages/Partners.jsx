@@ -1,6 +1,8 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
 import NeonCard from '../components/NeonCard';
+import Footer from '../components/Footer';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 import { Twitch } from 'lucide-react';
 import './partners-page.css';
 
@@ -28,6 +30,8 @@ const XLogo = () => (
 );
 
 const Partners = () => {
+  useDocumentTitle('Partners — AyresIV');
+
   const partners = [
     { name: "Wallah", image: WallahImg, twitter: "https://x.com/saywallahbruhh", twitch: "https://www.twitch.tv/wallah" },
     { name: "Benny", image: BennyImg, twitter: "https://x.com/ShmurdaBenny", twitch: "https://www.twitch.tv/benny" },
@@ -70,12 +74,14 @@ const Partners = () => {
 
           <div className="partners-grid">
             {partners.map((partner, idx) => (
-              <NeonCard key={idx}>
+              <NeonCard key={idx} index={idx}>
                 <div className="partner-content">
-                  <img 
-                    src={partner.image} 
-                    alt={partner.name} 
+                  <img
+                    src={partner.image}
+                    alt={partner.name}
                     className="partner-image"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <h3 className="partner-name">{partner.name}</h3>
                   
@@ -110,9 +116,7 @@ const Partners = () => {
         </div>
       </section>
 
-      <footer className="partners-footer">
-        <p>&copy; 2026 Ayres Optimizations. All rights reserved.</p>
-      </footer>
+      <Footer />
     </>
   );
 };

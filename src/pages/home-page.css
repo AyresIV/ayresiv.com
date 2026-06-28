@@ -372,15 +372,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    background: rgba(187, 134, 252, 0.1);
-    border: 2px solid rgba(187, 134, 252, 0.3);
-    margin: 0 auto 30px auto;
-    transition: all 0.3s ease;
-    animation: slideUp 0.8s ease-out, logoPulse 3s ease-in-out infinite 0.5s;
-    box-shadow: 0 0 20px rgba(187, 134, 252, 0.2), inset 0 0 20px rgba(187, 134, 252, 0.1);
+    width: auto;
+    height: auto;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin: 0 auto 28px auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    animation: slideUp 0.8s ease-out;
 }
 
 @keyframes logoPulse {
@@ -395,10 +394,7 @@
 }
 
 .logo-bubble:hover {
-    background: rgba(187, 134, 252, 0.2);
-    border-color: #ff79c6;
-    transform: translateY(-6px) scale(1.08);
-    box-shadow: 0 12px 40px rgba(187, 134, 252, 0.5), inset 0 0 30px rgba(255, 121, 198, 0.2);
+    transform: translateY(-6px) scale(1.06);
 }
 
 .logo-bubble-link {
@@ -471,20 +467,29 @@
 }
 
 .hero-logo {
-    width: 55px;
-    height: 55px;
+    width: 130px;
+    height: auto;
     margin: 0;
     padding: 0;
     display: block;
-    opacity: 0.95;
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 0 15px rgba(187, 134, 252, 0.3));
+    opacity: 0.98;
+    object-fit: contain;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    animation: heroLogoGlow 3s ease-in-out infinite;
+}
+
+@keyframes heroLogoGlow {
+    0%, 100% {
+        filter: drop-shadow(0 0 12px rgba(187, 134, 252, 0.45));
+    }
+    50% {
+        filter: drop-shadow(0 0 22px rgba(255, 121, 198, 0.7)) drop-shadow(0 0 32px rgba(187, 134, 252, 0.4));
+    }
 }
 
 .hero-logo:hover {
     opacity: 1;
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 20px rgba(187, 134, 252, 0.5));
+    transform: scale(1.08);
 }
 
 .hero-title {
@@ -666,6 +671,68 @@
     margin: 0;
 }
 
+/* Animated stat counters */
+.home-stats {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-content: center;
+    gap: 55px;
+    margin-top: 45px;
+    animation: fadeIn 1s ease-out 0.5s both;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-number {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1;
+    background: linear-gradient(135deg, #bb86fc 0%, #ff79c6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(187, 134, 252, 0.3);
+}
+
+.stat-label {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    color: #f4f4f9;
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+@media (max-width: 768px) {
+    .home-stats {
+        gap: 35px;
+        margin-top: 35px;
+    }
+
+    .stat-number {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-stats {
+        gap: 18px;
+    }
+
+    .stat-number {
+        font-size: 1.7rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+        letter-spacing: 0.8px;
+    }
+}
+
 .social-section {
     padding: 40px 20px;
     text-align: center;
@@ -710,14 +777,12 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .logo-bubble {
-        width: 75px;
-        height: 75px;
         margin-bottom: 20px;
     }
 
     .hero-logo {
-        width: 48px;
-        height: 48px;
+        width: 110px;
+        height: auto;
     }
 
     .home-hero {
@@ -785,14 +850,12 @@
 
 @media (max-width: 480px) {
     .logo-bubble {
-        width: 70px;
-        height: 70px;
         margin-bottom: 15px;
     }
 
     .hero-logo {
-        width: 42px;
-        height: 42px;
+        width: 92px;
+        height: auto;
     }
 
     .home-hero {

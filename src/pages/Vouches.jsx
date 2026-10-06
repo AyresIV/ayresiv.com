@@ -36,7 +36,7 @@ const Vouches = () => {
 
   return (
     <>
-      <Navigation isOptimizationsPage={true} />
+      <Navigation />
 
       {/* Animated particles for Vouches page */}
       <div className="page-particles"></div>

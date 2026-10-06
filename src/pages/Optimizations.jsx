@@ -1,23 +1,26 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import Navigation from '../components/Navigation';
 import NeonCard from '../components/NeonCard';
 import Footer from '../components/Footer';
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import './optimizations-page.css';
 
+const DISCORD_URL = 'https://discord.gg/spartagg';
+
+const PlanCard = ({ plan }) => (
+  <div className="package-content">
+    {plan.highlight && <div className="highlight-badge">Best Value</div>}
+    <h3 className="package-title">{plan.title}</h3>
+    <p className="package-price">{plan.price}</p>
+    <p className="package-description">{plan.description}</p>
+    <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="package-book">
+      <i className="fab fa-discord" aria-hidden="true"></i> Book on Discord
+    </a>
+  </div>
+);
+
 const Optimizations = () => {
   useDocumentTitle('Plans & Bundles — AyresIV');
-
-  const [selectedPackage, setSelectedPackage] = useState(null);
-  const selectedPackageRef = useRef(null);
-
-  const handlePackageClick = (title, price, description) => {
-    setSelectedPackage({ title, price, description });
-    // Scroll to selected package with a small delay to ensure state updates
-    setTimeout(() => {
-      selectedPackageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 50);
-  };
 
   const packages = [
     { title: "Base Optimization", price: "$75", description: "Essential Windows optimizations to improve system responsiveness, reduce input lag, and increase FPS. Includes disabling unnecessary services, optimizing power settings, and configuring graphics options for peak performance." },
@@ -39,10 +42,10 @@ const Optimizations = () => {
 
   return (
     <>
-      <Navigation isOptimizationsPage={true} />
+      <Navigation />
       
       {/* Animated particles for Optimizations page */}
-      <div className="page-particles"></div>
+      <div className="page-particles optimizations-bg"></div>
       <div className="page-particle page-particle-1"></div>
       <div className="page-particle page-particle-2"></div>
       <div className="page-particle page-particle-3"></div>
@@ -60,60 +63,28 @@ const Optimizations = () => {
         </div>
       </section>
 
-      <section className="optimizations-selected" ref={selectedPackageRef}>
+      <section className="bundles-section">
         <div className="optimizations-container">
-          {selectedPackage ? (
-            <div className="selected-package">
-              <h2 className="selected-title">{selectedPackage.title}</h2>
-              <p className="selected-price">{selectedPackage.price}</p>
-              <p className="selected-description">{selectedPackage.description}</p>
-              <a href="https://discord.gg/spartagg" target="_blank" rel="noopener noreferrer" className="discord-button">
-                <i className="fab fa-discord"></i> Join Discord to Proceed
-              </a>
-            </div>
-          ) : (
-            <div className="selected-placeholder">
-              <p>Select a package or bundle to see details</p>
-            </div>
-          )}
-        </div>
-      </section>
-
-      <section className="optimizations-section">
-        <div className="optimizations-container">
-          <h2 className="optimizations-section-title">Optimization Packages</h2>
-          <div className="optimizations-grid">
-            {packages.map((pkg, idx) => (
-              <NeonCard key={idx} index={idx}>
-                <div 
-                  className="package-content"
-                  onClick={() => handlePackageClick(pkg.title, pkg.price, pkg.description)}
-                >
-                  <h3 className="package-title">{pkg.title}</h3>
-                  <p className="package-price">{pkg.price}</p>
-                  <p className="package-description">{pkg.description}</p>
-                </div>
+          <h2 className="optimizations-section-title">Bundle Deals</h2>
+          <p className="optimizations-section-subtitle">The best value — everything combined at a lower price.</p>
+          <div className="optimizations-grid bundles-grid">
+            {bundles.map((bundle, idx) => (
+              <NeonCard key={bundle.title} index={idx} className={bundle.highlight ? 'card-highlight' : ''}>
+                <PlanCard plan={bundle} />
               </NeonCard>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bundles-section">
+      <section className="optimizations-section">
         <div className="optimizations-container">
-          <h2 className="optimizations-section-title">Bundle Deals</h2>
+          <h2 className="optimizations-section-title">Individual Services</h2>
+          <p className="optimizations-section-subtitle">Pick exactly what your PC needs.</p>
           <div className="optimizations-grid">
-            {bundles.map((bundle, idx) => (
-              <NeonCard key={idx} index={idx}>
-                <div 
-                  className={`bundle-content ${bundle.highlight ? 'bundle-highlight' : ''}`}
-                  onClick={() => handlePackageClick(bundle.title, bundle.price, bundle.description)}
-                >
-                  {bundle.highlight && <div className="highlight-badge">⭐ BEST VALUE</div>}
-                  <h3 className="bundle-title">{bundle.title}</h3>
-                  <p className="bundle-price">{bundle.price}</p>
-                  <p className="bundle-description">{bundle.description}</p>
-                </div>
+            {packages.map((pkg, idx) => (
+              <NeonCard key={pkg.title} index={idx}>
+                <PlanCard plan={pkg} />
               </NeonCard>
             ))}
           </div>

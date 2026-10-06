@@ -1,16 +1,18 @@
 /* Optimizations Page */
 
-/* Animated particle effects */
-.page-particles {
+/* Page background. Scoped with .optimizations-bg because About, Partners and
+   Vouches each define .page-particles too, and the last one loaded would win. */
+.page-particles.optimizations-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%),
-                radial-gradient(circle at 15% 30%, rgba(187, 134, 252, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 85% 70%, rgba(255, 121, 198, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 50% 15%, rgba(187, 134, 252, 0.08) 0%, transparent 35%);
+    /* Glows first: the first layer paints on top */
+    background: radial-gradient(circle at 15% 30%, rgba(187, 134, 252, 0.14) 0%, transparent 40%),
+                radial-gradient(circle at 85% 70%, rgba(255, 121, 198, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 10%, rgba(187, 134, 252, 0.12) 0%, transparent 38%),
+                linear-gradient(160deg, #0b0a14 0%, #1a1530 28%, #1b1f45 52%, #12305a 76%, #0b0a14 100%);
     pointer-events: none;
     z-index: 0;
     animation: particleShift 25s ease-in-out infinite;
@@ -100,7 +102,8 @@
 }
 
 .optimizations-hero-title {
-  font-size: 4rem;
+  font-size: clamp(2rem, 5vw, 4rem);
+  text-wrap: balance;
   font-weight: 700;
   color: #bb86fc;
   text-shadow: 0 0 20px rgba(187, 134, 252, 0.5);
@@ -121,83 +124,39 @@
   opacity: 0.8;
 }
 
-/* Selected Package Section */
-.optimizations-selected {
-  background: #0a0a0a;
-  padding: 40px 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 .optimizations-container {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
 }
 
-.selected-package {
-  background: linear-gradient(135deg, rgba(187, 134, 252, 0.1) 0%, rgba(255, 121, 198, 0.05) 100%);
-  border: 1px solid rgba(187, 134, 252, 0.3);
-  border-radius: 12px;
-  padding: 40px;
-  text-align: center;
-}
-
-.selected-placeholder {
-  text-align: center;
-  padding: 40px;
-  color: #9a9a9a;
-  font-size: 1.1rem;
-}
-
-.selected-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #bb86fc;
-  margin: 0 0 15px 0;
-}
-
-.selected-price {
-  font-size: 1.5rem;
-  color: #ff79c6;
-  margin: 0 0 20px 0;
-  font-weight: 600;
-}
-
-.selected-description {
-  color: #f4f4f9;
-  font-size: 1rem;
-  line-height: 1.6;
-  margin: 0 0 30px 0;
-}
-
-.discord-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #5865f2 0%, #4752c4 100%);
-  color: white;
-  padding: 12px 30px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 300ms ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.discord-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(88, 101, 242, 0.3);
-}
-
-/* Optimization Sections */
+/* Optimization Sections: transparent so the page-wide gradient flows through
+   without hard bands; soft glows sit behind each block instead. */
 .optimizations-section,
 .bundles-section {
-  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+  background: transparent;
   padding: 80px 20px;
+  position: relative;
+  z-index: 1;
 }
 
-.bundles-section {
-  background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%);
+.bundles-section::before,
+.optimizations-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bundles-section::before {
+  background: radial-gradient(ellipse 55% 60% at 50% 55%, rgba(187, 134, 252, 0.16) 0%, rgba(255, 121, 198, 0.06) 45%, transparent 75%);
+}
+
+.optimizations-section::before {
+  background:
+    radial-gradient(ellipse 45% 35% at 15% 30%, rgba(187, 134, 252, 0.1) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 35% at 85% 75%, rgba(255, 121, 198, 0.08) 0%, transparent 70%);
 }
 
 .optimizations-section-title {
@@ -252,6 +211,8 @@
 
 .highlight-badge {
   display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   background: linear-gradient(135deg, #ff79c6 0%, #bb86fc 100%);
   color: white;
   padding: 6px 12px;
@@ -260,11 +221,6 @@
   font-weight: 700;
   margin-bottom: 10px;
   width: fit-content;
-}
-
-.bundle-highlight {
-  border: 2px solid #ff79c6 !important;
-  background-color: rgba(255, 121, 198, 0.05) !important;
 }
 
 /* Footer */
@@ -301,14 +257,6 @@
     gap: 20px;
   }
 
-  .selected-package {
-    padding: 30px 20px;
-  }
-
-  .selected-title {
-    font-size: 1.5rem;
-  }
-
   .package-title,
   .bundle-title {
     font-size: 1.1rem;
@@ -343,24 +291,77 @@
     gap: 15px;
   }
 
-  .selected-package {
-    padding: 20px 15px;
-  }
-
-  .selected-title {
-    font-size: 1.3rem;
-  }
-
-  .selected-price {
-    font-size: 1.2rem;
-  }
-
-  .selected-description {
-    font-size: 0.9rem;
-  }
-
   .package-description,
   .bundle-description {
     font-size: 0.85rem;
   }
+}
+
+/* Section intro line */
+.optimizations-section .optimizations-section-title,
+.bundles-section .optimizations-section-title {
+  margin-bottom: 12px;
+}
+
+.optimizations-section-subtitle {
+  text-align: center;
+  color: #b9b4c7;
+  margin: 0 0 40px 0;
+  padding: 0;
+  font-size: 1.05rem;
+}
+
+/* Bundles: two wide cards, centered */
+.bundles-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 420px));
+  justify-content: center;
+}
+
+.package-content {
+  cursor: default;
+}
+
+.package-price {
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+.package-book {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 22px;
+  padding: 11px 18px;
+  border-radius: 10px;
+  border: 1px solid rgba(187, 134, 252, 0.4);
+  color: #e9dcff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.package-book:hover {
+  background: #5865f2;
+  border-color: #5865f2;
+  color: #fff;
+}
+
+/* Featured bundle */
+.neon-card.card-highlight {
+  border: 1px solid rgba(255, 121, 198, 0.65);
+  background: linear-gradient(160deg, #2a0f2a 0%, #050307 100%);
+  box-shadow: 0 0 0 1px rgba(255, 121, 198, 0.2), 0 18px 50px rgba(255, 121, 198, 0.18);
+}
+
+.card-highlight .package-book {
+  background: linear-gradient(135deg, #bb86fc, #ff79c6);
+  border-color: transparent;
+  color: #120c1a;
+}
+
+.card-highlight .package-book:hover {
+  filter: brightness(1.08);
+  color: #120c1a;
 }

@@ -1,19 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import SocialIcons from '../components/SocialIcons'
-import Footer from '../components/Footer';
-import CountUp from '../components/CountUp';
-import useDocumentTitle from '../hooks/useDocumentTitle';
-import logo from '../assets/images/mylogo.png';
+// Stylesheets first: home-page.css must load after base.css so the Home
+// background overrides base.css's generic .landing gradient.
 import '../assets/styles/base.css';
 import '../assets/styles/structure.css';
 import './home-page.css';
+import { Link } from 'react-router-dom';
+import { Zap, Gamepad2, ShieldCheck, ChevronDown } from 'lucide-react';
+import Navigation from '../components/Navigation';
+import SocialIcons from '../components/SocialIcons';
+import Footer from '../components/Footer';
+import TuneSection from '../components/tune/TuneSection';
+import CountUp from '../components/CountUp';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+import logo from '../assets/images/mylogo.png';
 
 const Home = () => {
   useDocumentTitle('AyresIV — PC Optimization & Performance Specialist');
 
   return (
     <>
+      <Navigation />
       <div className="landing home-landing">
         {/* Animated particles */}
         <div className="home-particles"></div>
@@ -56,19 +62,19 @@ const Home = () => {
 
             <div className="hero-features">
               <div className="feature">
-                <div className="feature-icon">⚡</div>
+                <div className="feature-icon"><Zap size={26} /></div>
                 <h3>Lightning Fast</h3>
                 <p>Boost FPS & reduce lag</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">🎮</div>
+                <div className="feature-icon"><Gamepad2 size={26} /></div>
                 <h3>Gaming Ready</h3>
                 <p>Optimized for competitive play</p>
               </div>
               <div className="feature">
-                <div className="feature-icon">📊</div>
-                <h3>Data Driven</h3>
-                <p>7+ years of expertise</p>
+                <div className="feature-icon"><ShieldCheck size={26} /></div>
+                <h3>Safe & Stable</h3>
+                <p>Every tweak stress-tested</p>
               </div>
             </div>
 
@@ -86,14 +92,29 @@ const Home = () => {
                 <span className="stat-label">Trusted Partners</span>
               </div>
             </div>
+
+            <button
+              type="button"
+              className="scroll-cue"
+              onClick={() => document.getElementById('what-i-tune')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <span className="scroll-cue__label">See what I tune</span>
+              <span className="scroll-cue__icon"><ChevronDown size={20} /></span>
+            </button>
           </div>
         </div>
 
-        <div className="social-section">
-          <p className="social-label">Connect With Me</p>
+      </div>
+      <TuneSection />
+      <section className="social-section social-strip">
+        <div className="social-inner">
+          <div className="social-copy">
+            <h2 className="social-heading">Let&apos;s connect</h2>
+            <p className="social-text">Questions before booking? Reach out on Discord or follow along on socials.</p>
+          </div>
           <SocialIcons />
         </div>
-      </div>
+      </section>
       <Footer />
     </>
   );

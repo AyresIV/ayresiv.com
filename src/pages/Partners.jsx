@@ -52,7 +52,7 @@ const Partners = () => {
 
   return (
     <>
-      <Navigation isOptimizationsPage={true} />
+      <Navigation />
 
       {/* Animated particles for Partners page */}
       <div className="page-particles"></div>

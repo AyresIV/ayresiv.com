@@ -11,7 +11,7 @@ const About = () => {
 
   return (
     <>
-      <Navigation isOptimizationsPage={true} />
+      <Navigation />
 
       {/* Animated particles for About page */}
       <div className="page-particles"></div>

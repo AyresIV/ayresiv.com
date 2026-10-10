@@ -630,3 +630,53 @@
     font-size: 0.88rem;
   }
 }
+
+/* Cyborg reveal on the portrait */
+.cyborg-reveal {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  touch-action: pan-y;
+  cursor: crosshair;
+}
+
+.cyborg-reveal__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.cyborg-reveal__hint {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #bb86fc;
+  background: rgba(10, 10, 15, 0.7);
+  border: 1px solid rgba(187, 134, 252, 0.5);
+  box-shadow: 0 0 16px rgba(187, 134, 252, 0.35);
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+  white-space: nowrap;
+  transition: opacity 0.5s ease;
+  animation: cyborgHintPulse 2.4s ease-in-out infinite;
+}
+
+.cyborg-reveal__hint.is-hidden {
+  opacity: 0;
+}
+
+@keyframes cyborgHintPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(187, 134, 252, 0.25); }
+  50% { box-shadow: 0 0 22px rgba(187, 134, 252, 0.55); }
+}

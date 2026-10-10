@@ -3,8 +3,15 @@ import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import useDocumentTitle from '../hooks/useDocumentTitle';
+import CyborgReveal from '../components/CyborgReveal';
 import ayresImg from '../assets/images/Ayres.jpg';
 import '../assets/styles/About.css';
+
+// Optional robot version of the portrait: drop src/assets/images/Ayres-robot.(jpg|png|webp)
+// in and the reveal uses it instead of the procedural metal shader.
+const robotImg = Object.values(
+  import.meta.glob('../assets/images/Ayres-robot.{jpg,jpeg,png,webp}', { eager: true, import: 'default' })
+)[0];
 
 const About = () => {
   useDocumentTitle('About — AyresIV');
@@ -29,8 +36,9 @@ const About = () => {
           <div className="about-layout">
             <div className="about-photo-wrap">
               <div className="about-photo-frame">
-                <img
+                <CyborgReveal
                   src={ayresImg}
+                  robotSrc={robotImg}
                   alt="Ayres — founder of AyresIV Optimizations"
                   className="about-photo"
                 />

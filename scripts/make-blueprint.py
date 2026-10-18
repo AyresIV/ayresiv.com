@@ -1,6 +1,6 @@
 """Generate the blueprint line-art version of the About portrait.
 
-Usage: python scripts/make-blueprint.py src/assets/images/Ayres.jpg src/assets/images/Ayres-blueprint.jpg
+Usage: python scripts/make-blueprint.py src/assets/images/Ayres.webp src/assets/images/Ayres-blueprint.webp
 Requires: pip install opencv-python-headless numpy
 """
 import sys

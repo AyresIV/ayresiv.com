@@ -1,56 +1,37 @@
-/* Epic Splash Screen Styling - Ares Theme */
+/* ===== First-visit splash =====
+   Timeline (see SplashScreen.jsx):
+     0 – ~1s     elements fade up in a short stagger
+     0.3s – hold progress line fills (--splash-hold)
+     hold        dissolves over --splash-exit while the site mounts underneath
+   Everything that loops animates transform/opacity only, so it stays on the
+   compositor; glows are static. */
 
 .splash-screen-epic {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     z-index: 9999;
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
+    cursor: pointer;
 }
 
-/* Background with gradient */
+/* ----- Background ----- */
 .splash-background {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     z-index: 1;
-    will-change: opacity, transform;
-    transform: translateZ(0);
 }
 
 .splash-gradient {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #0a0a0a 100%);
-    background-size: 250% 250%;
-    animation: gradientShift 18s ease-in-out infinite;
 }
 
-@keyframes gradientShift {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-/* Particle effect background - slowly drifting aurora glow */
+/* Slowly drifting aurora glow */
 .splash-particles {
     position: absolute;
     width: 120%;
@@ -61,50 +42,28 @@
                 radial-gradient(circle at 80% 80%, rgba(255, 121, 198, 0.18) 0%, transparent 45%),
                 radial-gradient(circle at 60% 20%, rgba(99, 179, 237, 0.12) 0%, transparent 40%);
     animation: auroraDrift 20s ease-in-out infinite;
-    will-change: transform;
 }
 
 @keyframes auroraDrift {
-    0%, 100% {
-        transform: translate3d(0, 0, 0) scale(1);
-    }
-    33% {
-        transform: translate3d(-3%, 2%, 0) scale(1.05);
-    }
-    66% {
-        transform: translate3d(2%, -3%, 0) scale(1.02);
-    }
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    33% { transform: translate3d(-3%, 2%, 0) scale(1.05); }
+    66% { transform: translate3d(2%, -3%, 0) scale(1.02); }
 }
 
-/* Burst flash effect */
+/* Light bloom used by the exit */
 .splash-burst-effect {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: radial-gradient(circle at center, rgba(187, 134, 252, 0) 0%, rgba(187, 134, 252, 0) 100%);
+    inset: 0;
     z-index: 5;
     pointer-events: none;
-    will-change: transform, opacity;
-    transform: translateZ(0);
+    opacity: 0;
+    background: radial-gradient(circle at center,
+                rgba(187, 134, 252, 0.28) 0%,
+                rgba(255, 121, 198, 0.14) 35%,
+                transparent 65%);
 }
 
-/* Exit particles */
-.splash-exit-particle {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #bb86fc, #ff79c6);
-    box-shadow: 0 0 15px rgba(187, 134, 252, 0.8);
-    z-index: 8;
-    pointer-events: none;
-    will-change: transform, opacity;
-    transform: translateZ(0);
-}
-
-/* Decorative animated circles */
+/* Decorative rings: static (a spinning perfect circle looks identical) */
 .splash-circle-1,
 .splash-circle-2,
 .splash-circle-3 {
@@ -112,6 +71,7 @@
     border: 2px solid rgba(187, 134, 252, 0.3);
     border-radius: 50%;
     z-index: 2;
+    animation: splashFade 1.2s ease-out both;
 }
 
 .splash-circle-1 {
@@ -119,7 +79,6 @@
     height: 400px;
     top: -100px;
     left: -100px;
-    animation: rotate 20s linear infinite;
 }
 
 .splash-circle-2 {
@@ -127,7 +86,6 @@
     height: 300px;
     bottom: -50px;
     right: -50px;
-    animation: rotate 15s linear infinite reverse;
 }
 
 .splash-circle-3 {
@@ -135,275 +93,139 @@
     height: 250px;
     top: 50%;
     right: 10%;
-    animation: rotate 25s linear infinite;
     border-color: rgba(255, 121, 198, 0.2);
 }
 
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-/* Main content */
+/* ----- Content: one staggered entrance ----- */
 .splash-content {
     position: relative;
     z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
-    animation: fadeInUp 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
-    will-change: transform, opacity, filter;
-    transform: translateZ(0);
 }
 
-@keyframes fadeInUp {
+.splash-content > * {
+    animation: splashRise 0.7s var(--ease-out) both;
+}
+
+.splash-icon { animation-delay: 0s; }
+.splash-title { animation-delay: 0.08s; }
+.splash-subtitle { animation-delay: 0.16s; }
+.splash-progress { animation-delay: 0.24s; }
+.splash-tagline { animation-delay: 0.32s; }
+
+@keyframes splashRise {
     from {
         opacity: 0;
-        transform: translateY(40px) scale(0.98);
-        filter: blur(8px);
+        transform: translateY(16px) scale(0.97);
     }
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
-        filter: blur(0);
+        transform: none;
     }
 }
 
-/* Title container */
-.splash-title-container {
-    margin-bottom: 40px;
-    animation: slideDown 1.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+@keyframes splashFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.splash-title {
-    font-size: 5rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, #bb86fc 0%, #ff79c6 50%, #bb86fc 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin: 0;
-    text-shadow: 0 0 40px rgba(187, 134, 252, 0.5);
-    letter-spacing: -2px;
-    animation: glow 2s ease-in-out infinite;
-}
-
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-60px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes glow {
-    0%, 100% {
-        text-shadow: 0 0 20px rgba(187, 134, 252, 0.5), 
-                     0 0 40px rgba(187, 134, 252, 0.3);
-    }
-    50% {
-        text-shadow: 0 0 30px rgba(187, 134, 252, 0.8), 
-                     0 0 60px rgba(255, 121, 198, 0.5),
-                     0 0 80px rgba(187, 134, 252, 0.3);
-    }
-}
-
-.splash-subtitle-line {
-    width: 200px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #ff79c6, transparent);
-    margin: 20px auto;
-    animation: expandLine 1s ease-out 0.5s both;
-}
-
-@keyframes expandLine {
-    from {
-        width: 0;
-        opacity: 0;
-    }
-    to {
-        width: 200px;
-        opacity: 1;
-    }
-}
-
-.splash-subtitle {
-    font-size: 1.4rem;
-    color: #ff79c6;
-    font-weight: 600;
-    margin: 0;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    animation: fadeIn 1s ease-out 0.7s both;
-}
-
-/* Logo icon */
 .splash-icon {
     width: 120px;
-    height: 120px;
-    margin: 30px 0;
-    filter: drop-shadow(0 0 20px rgba(187, 134, 252, 0.5));
-    animation: logoReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both,
-               logoFloat 6s ease-in-out 1.45s infinite;
-    will-change: transform, opacity, filter;
-    transform: translateZ(0);
-}
-
-@keyframes logoReveal {
-    0% {
-        opacity: 0;
-        transform: translateY(24px) scale(0.5) rotate(-12deg);
-        filter: blur(10px) drop-shadow(0 0 0 rgba(187, 134, 252, 0));
-    }
-    60% {
-        opacity: 1;
-        filter: blur(0) drop-shadow(0 0 30px rgba(255, 121, 198, 0.7));
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1) rotate(0deg);
-        filter: blur(0) drop-shadow(0 0 20px rgba(187, 134, 252, 0.5));
-    }
-}
-
-@keyframes logoFloat {
-    0%, 100% {
-        transform: translateY(0) scale(1);
-    }
-    50% {
-        transform: translateY(-12px) scale(1.03);
-    }
+    margin-bottom: 26px;
+    filter: drop-shadow(0 0 18px rgba(187, 134, 252, 0.55));
 }
 
 .splash-logo-img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    animation: logoGlow 2s ease-in-out infinite;
-}
-
-@keyframes logoGlow {
-    0%, 100% {
-        filter: drop-shadow(0 0 10px rgba(187, 134, 252, 0.5));
-    }
-    50% {
-        filter: drop-shadow(0 0 20px rgba(255, 121, 198, 0.8)) drop-shadow(0 0 30px rgba(187, 134, 252, 0.5));
-    }
-}
-
-/* Enter button */
-.splash-enter-button {
-    position: relative;
-    padding: 16px 50px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #0a0a0a;
-    background: linear-gradient(135deg, #bb86fc 0%, #ff79c6 100%);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    margin-top: 30px;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    overflow: hidden;
-    box-shadow: 0 8px 30px rgba(187, 134, 252, 0.4);
-    animation: buttonPulse 2s ease-in-out infinite;
-}
-
-@keyframes buttonPulse {
-    0%, 100% {
-        box-shadow: 0 8px 30px rgba(187, 134, 252, 0.4);
-        transform: scale(1);
-    }
-    50% {
-        box-shadow: 0 12px 40px rgba(255, 121, 198, 0.6);
-        transform: scale(1.02);
-    }
-}
-
-.splash-enter-button:hover {
-    background: linear-gradient(135deg, #ff79c6 0%, #bb86fc 100%);
-    box-shadow: 0 15px 50px rgba(255, 121, 198, 0.8);
-    transform: translateY(-3px);
-}
-
-.splash-enter-button:active {
-    transform: translateY(-1px);
-}
-
-.button-text {
-    position: relative;
-    z-index: 2;
     display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
-.button-glow {
+.splash-title {
+    margin: 0;
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    background: linear-gradient(135deg, #bb86fc 0%, #ff79c6 50%, #bb86fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* drop-shadow (not text-shadow) so the glow follows the gradient glyphs */
+    filter: drop-shadow(0 0 22px rgba(187, 134, 252, 0.4));
+}
+
+.splash-subtitle {
+    margin: 14px 0 0;
+    padding: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ff79c6;
+}
+
+/* Progress line: fills over the hold time, then the splash leaves */
+.splash-progress {
+    position: relative;
+    width: 200px;
+    height: 2px;
+    margin: 22px auto 0;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.splash-progress-bar {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    border-radius: 50px;
-    animation: buttonShine 3s ease-in-out infinite;
+    inset: 0;
+    background: linear-gradient(90deg, #bb86fc, #ff79c6);
+    transform-origin: left center;
+    transform: scaleX(0);
+    animation: splashProgress calc(var(--splash-hold, 1800ms) - 300ms) linear 0.3s forwards;
 }
 
-@keyframes buttonShine {
-    0%, 100% {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    50% {
-        opacity: 1;
-        transform: translateX(100%);
-    }
+@keyframes splashProgress {
+    to { transform: scaleX(1); }
 }
 
-/* Ripple effect */
-.ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    transform: scale(0);
-    animation: rippleEffect 0.6s ease-out;
-    pointer-events: none;
-}
-
-@keyframes rippleEffect {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
-}
-
-/* Tagline */
 .splash-tagline {
-    margin-top: 40px;
+    margin: 22px 0 0;
+    padding: 0;
     font-size: 1rem;
-    color: #bb86fc;
     font-weight: 500;
     letter-spacing: 1px;
-    opacity: 0.8;
-    animation: fadeIn 1.5s ease-out 1s both;
+    color: #bb86fc;
+    opacity: 0.85;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+/* Small skip control (any click/key also skips; this is the visible, focusable one) */
+.splash-skip {
+    position: absolute;
+    z-index: 11;
+    bottom: max(32px, env(safe-area-inset-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 16px;
+    border: 1px solid rgba(187, 134, 252, 0.3);
+    border-radius: 999px;
+    background: rgba(10, 10, 10, 0.4);
+    color: #cfc6e0;
+    font: inherit;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    animation: splashFade 0.6s ease-out 0.6s both;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.splash-skip:hover {
+    color: #fff;
+    border-color: rgba(255, 121, 198, 0.6);
 }
 
 /* Floating particles */
@@ -439,135 +261,80 @@
 
 @keyframes float {
     0%, 100% {
-        transform: translateY(0) translateX(0);
+        transform: translate(0, 0);
         opacity: 1;
     }
     50% {
-        transform: translateY(-30px) translateX(20px);
+        transform: translate(20px, -30px);
         opacity: 0.5;
     }
 }
 
-/* Fade out animation when exiting */
-.splash-screen.fade-zoom-out {
-    animation: fadeZoomOut 0.5s ease-out forwards;
+/* ----- Exit: dissolve into the site, which is already mounted underneath ----- */
+.splash-screen-epic.is-exiting {
+    pointer-events: none;
 }
 
-@keyframes fadeZoomOut {
-    to {
-        opacity: 0;
-        transform: scale(0.95);
-    }
-}
-
-/* ===== Smooth cinematic exit (driven by .is-exiting) ===== */
-
-/* The whole splash gently warps toward the viewer and dissolves.
-   The logo lives inside .splash-content, so it rides this hero zoom too. */
 .splash-screen-epic.is-exiting .splash-content {
-    animation: splashWarpOut 1s cubic-bezier(0.6, 0, 0.2, 1) forwards;
+    animation: splashWarpOut var(--splash-exit, 700ms) var(--ease-out) forwards;
 }
 
-/* A soft light bloom blooms outward from behind the logo */
+.splash-screen-epic.is-exiting .splash-content > * {
+    animation-play-state: paused;
+}
+
+.splash-screen-epic.is-exiting .splash-background,
+.splash-screen-epic.is-exiting .splash-skip,
+.splash-screen-epic.is-exiting .splash-particle {
+    animation: splashFadeOut calc(var(--splash-exit, 700ms) * 0.9) ease-out forwards;
+}
+
 .splash-screen-epic.is-exiting .splash-burst-effect {
-    background: radial-gradient(circle at center,
-                rgba(187, 134, 252, 0.28) 0%,
-                rgba(255, 121, 198, 0.14) 35%,
-                transparent 65%);
-    animation: splashBloom 1.1s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+    animation: splashBloom var(--splash-exit, 700ms) var(--ease-out) forwards;
 }
 
-/* Ambient background eases away just behind the content */
-.splash-screen-epic.is-exiting .splash-background {
-    animation: splashBgFade 1s ease forwards;
-}
-
-/* Decorative rings expand out and fade */
 .splash-screen-epic.is-exiting .splash-circle-1,
 .splash-screen-epic.is-exiting .splash-circle-2,
 .splash-screen-epic.is-exiting .splash-circle-3 {
-    animation: splashRingsOut 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* Floating particles shrink away */
-.splash-screen-epic.is-exiting .splash-particle {
-    animation: splashParticlesOut 0.8s ease-out forwards;
+    animation: splashRingsOut var(--splash-exit, 700ms) var(--ease-out) forwards;
 }
 
 @keyframes splashWarpOut {
-    0% {
-        opacity: 1;
-        transform: scale(1) translateZ(0);
-        filter: blur(0);
-    }
-    100% {
+    to {
         opacity: 0;
-        transform: scale(1.25) translateZ(0);
-        filter: blur(6px);
+        transform: scale(1.08);
     }
+}
+
+@keyframes splashFadeOut {
+    to { opacity: 0; }
 }
 
 @keyframes splashBloom {
-    0% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    40% {
-        opacity: 0.55;
-    }
-    100% {
-        opacity: 0;
-        transform: scale(2.2);
-    }
-}
-
-@keyframes splashBgFade {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+    0% { opacity: 0; transform: scale(0.6); }
+    35% { opacity: 0.6; }
+    100% { opacity: 0; transform: scale(2); }
 }
 
 @keyframes splashRingsOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
+    to {
         opacity: 0;
-        transform: scale(1.5) rotate(35deg);
+        transform: scale(1.4);
     }
 }
 
-@keyframes splashParticlesOut {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0) translateY(-40px);
-    }
-}
-
-/* Responsive design */
+/* ----- Responsive ----- */
 @media (max-width: 768px) {
     .splash-title {
         font-size: 3.5rem;
     }
 
     .splash-subtitle {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
     }
 
     .splash-icon {
         width: 100px;
-        height: 100px;
-    }
-
-    .splash-enter-button {
-        padding: 14px 40px;
-        font-size: 1rem;
     }
 
     .splash-circle-1 {
@@ -588,7 +355,7 @@
 
 @media (max-width: 480px) {
     .splash-title {
-        font-size: 2.5rem;
+        font-size: 2.75rem;
     }
 
     .splash-subtitle {
@@ -597,22 +364,11 @@
     }
 
     .splash-icon {
-        width: 80px;
-        height: 80px;
-    }
-
-    .splash-enter-button {
-        padding: 12px 30px;
-        font-size: 0.9rem;
-        letter-spacing: 1px;
+        width: 84px;
     }
 
     .splash-tagline {
         font-size: 0.85rem;
-    }
-
-    .splash-title-container {
-        margin-bottom: 20px;
     }
 
     .splash-circle-1,

@@ -1,9 +1,11 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
+import Particles from '../components/Particles';
+import BrandIcon from '../components/BrandIcon';
 import NeonCard from '../components/NeonCard';
+import Faq from '../components/Faq';
 import Footer from '../components/Footer';
-import useDocumentTitle from '../hooks/useDocumentTitle';
-import './optimizations-page.css';
+import usePageMeta from '../hooks/usePageMeta';
 
 const DISCORD_URL = 'https://discord.gg/spartagg';
 
@@ -14,13 +16,13 @@ const PlanCard = ({ plan }) => (
     <p className="package-price">{plan.price}</p>
     <p className="package-description">{plan.description}</p>
     <a href={DISCORD_URL} target="_blank" rel="noopener noreferrer" className="package-book">
-      <i className="fab fa-discord" aria-hidden="true"></i> Book on Discord
+      <BrandIcon name="discord" /> Book on Discord
     </a>
   </div>
 );
 
 const Optimizations = () => {
-  useDocumentTitle('Plans & Bundles — AyresIV');
+  usePageMeta('/optimizations');
 
   const packages = [
     { title: "Base Optimization", price: "$75", description: "Essential Windows optimizations to improve system responsiveness, reduce input lag, and increase FPS. Includes disabling unnecessary services, optimizing power settings, and configuring graphics options for peak performance." },
@@ -45,28 +47,21 @@ const Optimizations = () => {
       <Navigation />
       
       {/* Animated particles for Optimizations page */}
-      <div className="page-particles optimizations-bg"></div>
-      <div className="page-particle page-particle-1"></div>
-      <div className="page-particle page-particle-2"></div>
-      <div className="page-particle page-particle-3"></div>
-      <div className="page-particle page-particle-4"></div>
-      <div className="page-particle page-particle-5"></div>
-      <div className="page-particle page-particle-6"></div>
-      <div className="page-particle page-particle-7"></div>
-      <div className="page-particle page-particle-8"></div>
+      <Particles className="optimizations-bg" />
       
+      <main id="main" tabIndex={-1}>
       <section className="optimizations-hero">
         <div className="optimizations-hero-content">
-          <h1 className="optimizations-hero-title">Get The Most Out of Your PC</h1>
-          <p className="optimizations-hero-subtitle">More Frames, Less Input Lag, and Latency</p>
-          <p className="optimizations-hero-guarantee">7+ Years of PC Optimization Experience</p>
+          <h1 data-reveal className="optimizations-hero-title">Get The Most Out of Your PC</h1>
+          <p data-reveal className="optimizations-hero-subtitle">More Frames, Less Input Lag, and Latency</p>
+          <p data-reveal className="optimizations-hero-guarantee">7+ Years of PC Optimization Experience</p>
         </div>
       </section>
 
       <section className="bundles-section">
         <div className="optimizations-container">
-          <h2 className="optimizations-section-title">Bundle Deals</h2>
-          <p className="optimizations-section-subtitle">The best value — everything combined at a lower price.</p>
+          <h2 data-reveal className="optimizations-section-title">Bundle Deals</h2>
+          <p data-reveal className="optimizations-section-subtitle">The best value — everything combined at a lower price.</p>
           <div className="optimizations-grid bundles-grid">
             {bundles.map((bundle, idx) => (
               <NeonCard key={bundle.title} index={idx} className={bundle.highlight ? 'card-highlight' : ''}>
@@ -79,8 +74,8 @@ const Optimizations = () => {
 
       <section className="optimizations-section">
         <div className="optimizations-container">
-          <h2 className="optimizations-section-title">Individual Services</h2>
-          <p className="optimizations-section-subtitle">Pick exactly what your PC needs.</p>
+          <h2 data-reveal className="optimizations-section-title">Individual Services</h2>
+          <p data-reveal className="optimizations-section-subtitle">Pick exactly what your PC needs.</p>
           <div className="optimizations-grid">
             {packages.map((pkg, idx) => (
               <NeonCard key={pkg.title} index={idx}>
@@ -90,6 +85,9 @@ const Optimizations = () => {
           </div>
         </div>
       </section>
+
+      <Faq />
+      </main>
 
       <Footer />
     </>

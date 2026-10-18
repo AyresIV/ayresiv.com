@@ -382,17 +382,6 @@
     animation: slideUp 0.8s ease-out;
 }
 
-@keyframes logoPulse {
-    0%, 100% {
-        box-shadow: 0 0 20px rgba(187, 134, 252, 0.2), inset 0 0 20px rgba(187, 134, 252, 0.1);
-        transform: scale(1);
-    }
-    50% {
-        box-shadow: 0 0 40px rgba(187, 134, 252, 0.4), inset 0 0 30px rgba(187, 134, 252, 0.2);
-        transform: scale(1.02);
-    }
-}
-
 .logo-bubble:hover {
     transform: translateY(-6px) scale(1.06);
 }
@@ -475,15 +464,37 @@
     opacity: 0.98;
     object-fit: contain;
     transition: transform 0.3s ease, opacity 0.3s ease;
+    /* Static glow: animating filter repaints every frame (and this class is
+       also the nav logo on every page). The pulse lives on .logo-bubble::before. */
+    filter: drop-shadow(0 0 14px rgba(187, 134, 252, 0.5));
+}
+
+/* Hero logo pulse: a pre-blurred glow layer that only animates opacity and
+   scale, so it stays on the compositor. */
+.hero-content .logo-bubble {
+    position: relative;
+}
+
+.hero-content .logo-bubble::before {
+    content: '';
+    position: absolute;
+    inset: -18%;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(255, 121, 198, 0.45), rgba(187, 134, 252, 0.2) 55%, transparent 75%);
+    opacity: 0.35;
+    pointer-events: none;
     animation: heroLogoGlow 3s ease-in-out infinite;
 }
 
 @keyframes heroLogoGlow {
     0%, 100% {
-        filter: drop-shadow(0 0 12px rgba(187, 134, 252, 0.45));
+        opacity: 0.35;
+        transform: scale(0.94);
     }
     50% {
-        filter: drop-shadow(0 0 22px rgba(255, 121, 198, 0.7)) drop-shadow(0 0 32px rgba(187, 134, 252, 0.4));
+        opacity: 0.9;
+        transform: scale(1.04);
     }
 }
 
@@ -503,18 +514,8 @@
     margin: 0 0 10px 0;
     line-height: 1.1;
     letter-spacing: -2px;
-    animation: glowTitle 2.5s ease-in-out infinite 0.3s;
-}
-
-@keyframes glowTitle {
-    0%, 100% {
-        text-shadow: 0 0 20px rgba(187, 134, 252, 0.4), 0 0 40px rgba(187, 134, 252, 0.2);
-        filter: brightness(1);
-    }
-    50% {
-        text-shadow: 0 0 30px rgba(187, 134, 252, 0.6), 0 0 60px rgba(255, 121, 198, 0.4), 0 0 90px rgba(187, 134, 252, 0.2);
-        filter: brightness(1.1);
-    }
+    /* Glow is static: an infinite text-shadow + filter animation on a 4.5rem
+       heading repainted it every frame. The logo glow above carries the pulse. */
 }
 
 .hero-subtitle {
@@ -548,7 +549,7 @@
     font-weight: 600;
     border-radius: 10px;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: transform 0.25s var(--ease-out), box-shadow 0.25s ease, background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
     border: 2px solid transparent;
     cursor: pointer;
     display: inline-block;
@@ -622,7 +623,7 @@
     border: 2px solid rgba(187, 134, 252, 0.25);
     border-radius: 12px;
     padding: 20px 15px;
-    transition: all 0.3s ease;
+    transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
@@ -764,16 +765,6 @@
     }
 }
 
-.social-label {
-    color: #bb86fc;
-    font-size: 1rem;
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-weight: 600;
-    animation: slideUp 0.8s ease-out 0.2s both;
-}
-
 /* Responsive Design */
 @media (max-width: 768px) {
     .logo-bubble {
@@ -840,11 +831,6 @@
 
     .social-section {
         padding: 35px 20px;
-    }
-
-    .social-label {
-        font-size: 0.9rem;
-        margin-bottom: 20px;
     }
 }
 
@@ -917,11 +903,6 @@
 
     .social-section {
         padding: 30px 15px;
-    }
-
-    .social-label {
-        font-size: 0.85rem;
-        margin-bottom: 18px;
     }
 }
 

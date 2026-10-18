@@ -1,43 +1,52 @@
-import React from 'react';
-// Stylesheets first: home-page.css must load after base.css so the Home
-// background overrides base.css's generic .landing gradient.
-import '../assets/styles/base.css';
-import '../assets/styles/structure.css';
-import './home-page.css';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useLenis } from 'lenis/react';
+import { gsap, useGSAP } from '../lib/gsap';
+import { useAccessibility } from '../context/accessibility';
 import { Zap, Gamepad2, ShieldCheck, ChevronDown } from 'lucide-react';
 import Navigation from '../components/Navigation';
+import Particles from '../components/Particles';
 import SocialIcons from '../components/SocialIcons';
 import Footer from '../components/Footer';
 import TuneSection from '../components/tune/TuneSection';
 import CountUp from '../components/CountUp';
-import useDocumentTitle from '../hooks/useDocumentTitle';
-import logo from '../assets/images/mylogo.png';
+import partners from '../data/partners';
+import usePageMeta from '../hooks/usePageMeta';
+import logo from '../assets/images/mylogo.webp';
 
 const Home = () => {
-  useDocumentTitle('AyresIV — PC Optimization & Performance Specialist');
+  usePageMeta('/');
+  const lenis = useLenis();
+  const { reduceMotion } = useAccessibility();
+  const landingRef = useRef(null);
+
+  // As the hero scrolls away it drifts up and fades, handing off to the
+  // "What I tune" section instead of sliding out as a flat block.
+  useGSAP(
+    () => {
+      if (reduceMotion) return;
+      gsap.to('.home-hero', {
+        y: -90,
+        opacity: 0.15,
+        ease: 'none',
+        scrollTrigger: { trigger: landingRef.current, start: 'top top', end: 'bottom top', scrub: true },
+      });
+    },
+    { scope: landingRef, dependencies: [reduceMotion], revertOnUpdate: true }
+  );
+
+  const scrollToTune = () => {
+    if (lenis) lenis.scrollTo('#what-i-tune');
+    else document.getElementById('what-i-tune')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <>
       <Navigation />
-      <div className="landing home-landing">
+      <main id="main" tabIndex={-1}>
+      <div className="landing home-landing" ref={landingRef}>
         {/* Animated particles */}
-        <div className="home-particles"></div>
-        <div className="home-particle home-particle-1"></div>
-        <div className="home-particle home-particle-2"></div>
-        <div className="home-particle home-particle-3"></div>
-        <div className="home-particle home-particle-4"></div>
-        <div className="home-particle home-particle-5"></div>
-        <div className="home-particle home-particle-6"></div>
-        <div className="home-particle home-particle-7"></div>
-        <div className="home-particle home-particle-8"></div>
-        <div className="home-particle home-particle-9"></div>
-        <div className="home-particle home-particle-10"></div>
-        <div className="home-particle home-particle-11"></div>
-        <div className="home-particle home-particle-12"></div>
-        <div className="home-particle home-particle-13"></div>
-        <div className="home-particle home-particle-14"></div>
-        <div className="home-particle home-particle-15"></div>
+        <Particles variant="home" count={15} />
         
         <div className="home-hero">
           <div className="hero-content">
@@ -88,7 +97,7 @@ const Home = () => {
                 <span className="stat-label">Years Experience</span>
               </div>
               <div className="stat">
-                <span className="stat-number"><CountUp end={15} /></span>
+                <span className="stat-number"><CountUp end={partners.length} /></span>
                 <span className="stat-label">Trusted Partners</span>
               </div>
             </div>
@@ -96,7 +105,7 @@ const Home = () => {
             <button
               type="button"
               className="scroll-cue"
-              onClick={() => document.getElementById('what-i-tune')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={scrollToTune}
             >
               <span className="scroll-cue__label">See what I tune</span>
               <span className="scroll-cue__icon"><ChevronDown size={20} /></span>
@@ -108,13 +117,14 @@ const Home = () => {
       <TuneSection />
       <section className="social-section social-strip">
         <div className="social-inner">
-          <div className="social-copy">
+          <div data-reveal className="social-copy">
             <h2 className="social-heading">Let&apos;s connect</h2>
             <p className="social-text">Questions before booking? Reach out on Discord or follow along on socials.</p>
           </div>
           <SocialIcons />
         </div>
       </section>
+      </main>
       <Footer />
     </>
   );

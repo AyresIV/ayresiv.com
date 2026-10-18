@@ -1,32 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Navigation from '../components/Navigation';
+import Particles from '../components/Particles';
 import Footer from '../components/Footer';
-import useDocumentTitle from '../hooks/useDocumentTitle';
+import partners from '../data/partners';
+import usePageMeta from '../hooks/usePageMeta';
 import BlueprintReveal from '../components/BlueprintReveal';
-import ayresImg from '../assets/images/Ayres.jpg';
-import ayresBlueprintImg from '../assets/images/Ayres-blueprint.jpg';
-import '../assets/styles/About.css';
+import ayresImg from '../assets/images/Ayres.webp';
+import ayresBlueprintImg from '../assets/images/Ayres-blueprint.webp';
 
 const About = () => {
-  useDocumentTitle('About — AyresIV');
+  usePageMeta('/about');
 
   return (
     <>
       <Navigation />
 
       {/* Animated particles for About page */}
-      <div className="page-particles"></div>
-      <div className="page-particle page-particle-1"></div>
-      <div className="page-particle page-particle-2"></div>
-      <div className="page-particle page-particle-3"></div>
-      <div className="page-particle page-particle-4"></div>
-      <div className="page-particle page-particle-5"></div>
-      <div className="page-particle page-particle-6"></div>
-      <div className="page-particle page-particle-7"></div>
-      <div className="page-particle page-particle-8"></div>
+      <Particles />
 
-      <div className="about-page">
+      <main id="main" tabIndex={-1} className="about-page">
         <section className="about-section">
           <div className="about-layout">
             <div className="about-photo-wrap">
@@ -72,7 +65,7 @@ const About = () => {
                   <span className="about-highlight-label">Years Experience</span>
                 </div>
                 <div className="about-highlight">
-                  <span className="about-highlight-num">15</span>
+                  <span className="about-highlight-num">{partners.length}</span>
                   <span className="about-highlight-label">Trusted Partners</span>
                 </div>
               </div>
@@ -93,7 +86,7 @@ const About = () => {
             </div>
           </div>
         </section>
-      </div>
+      </main>
       <Footer />
     </>
   );

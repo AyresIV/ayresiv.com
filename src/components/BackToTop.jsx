@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import { ChevronUp } from 'lucide-react';
+import { useLenis } from 'lenis/react';
 
 // Floating button that appears after scrolling down and smooth-scrolls to top.
 const BackToTop = () => {
   const [show, setShow] = useState(false);
+  const lenis = useLenis();
 
   useEffect(() => {
     const onScroll = () => setShow(window.scrollY > 400);
@@ -15,7 +17,9 @@ const BackToTop = () => {
   return (
     <button
       className={`back-to-top ${show ? 'visible' : ''}`}
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      onClick={() =>
+        lenis ? lenis.scrollTo(0) : window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
       aria-label="Back to top"
     >
       <ChevronUp size={24} />

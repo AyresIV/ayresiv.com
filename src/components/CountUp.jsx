@@ -1,14 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
+import { useAccessibility } from '../context/accessibility';
 
 // Animated number that counts up from 0 to `end` once it scrolls into view.
 const CountUp = ({ end, duration = 2000, suffix = '', prefix = '' }) => {
   const ref = useRef(null);
   const started = useRef(false);
+  const { reduceMotion } = useAccessibility();
   const [value, setValue] = useState(0);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    // Reduced motion: no count-up, the final number is rendered directly.
+    if (!el || reduceMotion) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -29,12 +32,12 @@ const CountUp = ({ end, duration = 2000, suffix = '', prefix = '' }) => {
     );
     observer.observe(el);
     return () => observer.disconnect();
-  }, [end, duration]);
+  }, [end, duration, reduceMotion]);
 
   return (
     <span ref={ref}>
       {prefix}
-      {value.toLocaleString()}
+      {(reduceMotion ? end : value).toLocaleString()}
       {suffix}
     </span>
   );

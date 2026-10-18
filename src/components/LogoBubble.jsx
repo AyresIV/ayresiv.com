@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/images/mylogo.png';
-import '../pages/home-page.css';
+import logo from '../assets/images/mylogo.webp';
 
 const LogoBubble = () => {
   return (

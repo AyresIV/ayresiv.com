@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Claude Code / agent skills (local tooling, not part of the site)
+.agents/
+.claude/
+skills-lock.json

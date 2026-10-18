@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import { STEPS } from './tuneSteps';
-import './tune.css';
+import { useAccessibility } from '../../context/accessibility';
 
 // Which caption to show for a given scroll progress
 function stepFor(p) {
@@ -17,6 +17,14 @@ const TuneSection = () => {
   const canvasRef = useRef(null);
   const progressRef = useRef(null);
   const [step, setStep] = useState('intro');
+  const { reduceMotion } = useAccessibility();
+  const sceneRef = useRef(null);
+  const stillRef = useRef(reduceMotion);
+
+  useEffect(() => {
+    stillRef.current = reduceMotion;
+    sceneRef.current?.setStill(reduceMotion);
+  }, [reduceMotion]);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -51,6 +59,8 @@ const TuneSection = () => {
         import('./tuneScene').then(({ createTuneScene }) => {
           if (cancelled) return;
           scene = createTuneScene(canvas);
+          sceneRef.current = scene;
+          scene.setStill(stillRef.current);
           scene.setProgress(progress());
           if (visible) scene.start();
         });
@@ -79,6 +89,7 @@ const TuneSection = () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
       scene?.dispose();
+      sceneRef.current = null;
     };
   }, []);
 

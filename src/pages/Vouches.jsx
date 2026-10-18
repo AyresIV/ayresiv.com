@@ -1,20 +1,16 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
+import Particles from '../components/Particles';
 import NeonCard from '../components/NeonCard';
 import Footer from '../components/Footer';
-import useDocumentTitle from '../hooks/useDocumentTitle';
-import PanthoImg from '../assets/images/Pantho.jpg';
-import AlexImg from '../assets/images/Alex.png';
-import './vouches-page.css';
+import usePageMeta from '../hooks/usePageMeta';
+import partners from '../data/partners';
 
 // Clients who are also partners get their real avatar.
-const avatarMap = {
-  Pantho: PanthoImg,
-  AlexApe: AlexImg,
-};
+const avatarMap = Object.fromEntries(partners.map((p) => [p.name, p.image]));
 
 const Vouches = () => {
-  useDocumentTitle('Vouches — AyresIV');
+  usePageMeta('/vouches');
 
   const vouches = [
     { text: "Will reccomended spartaOS to anyone pc 3000x better in performance also got free guidance on how to daisy chain fans", client: "guzzle" },
@@ -39,21 +35,13 @@ const Vouches = () => {
       <Navigation />
 
       {/* Animated particles for Vouches page */}
-      <div className="page-particles"></div>
-      <div className="page-particle page-particle-1"></div>
-      <div className="page-particle page-particle-2"></div>
-      <div className="page-particle page-particle-3"></div>
-      <div className="page-particle page-particle-4"></div>
-      <div className="page-particle page-particle-5"></div>
-      <div className="page-particle page-particle-6"></div>
-      <div className="page-particle page-particle-7"></div>
-      <div className="page-particle page-particle-8"></div>
+      <Particles />
 
-      <section className="vouches-section">
+      <main id="main" tabIndex={-1} className="vouches-section">
         <div className="vouches-container">
           <div className="vouches-header">
-            <h1 className="vouches-title">Client Vouches</h1>
-            <div className="vouches-divider"></div>
+            <h1 data-reveal className="vouches-title">Client Vouches</h1>
+            <div data-reveal className="vouches-divider"></div>
           </div>
 
           <div className="vouches-grid">
@@ -62,7 +50,7 @@ const Vouches = () => {
               return (
                 <NeonCard key={idx} index={idx}>
                   <div className="vouch-content">
-                    <div className="vouch-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                    <div className="vouch-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
                     <p className="vouch-text">{vouch.text}</p>
                     <div className="vouch-author">
                       {avatar ? (
@@ -80,7 +68,7 @@ const Vouches = () => {
             })}
           </div>
         </div>
-      </section>
+      </main>
 
       <Footer />
     </>

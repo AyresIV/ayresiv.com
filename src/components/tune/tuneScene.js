@@ -482,8 +482,11 @@ export function createTuneScene(canvas) {
     }));
   };
 
+  // Reduced motion: no idle bobbing or spinning fans, only scroll-driven movement
+  let still = false;
+
   const apply = (p, dt) => {
-    const t = performance.now() / 1000;
+    const t = still ? 0 : performance.now() / 1000;
     // Opens facing the front fans, swings round to the glass side, then keeps
     // drifting slowly while the parts come out
     const swing = ramp(p, 0, 0.18);
@@ -494,7 +497,7 @@ export function createTuneScene(canvas) {
     pc.position.x = compact ? 0 : 0.9;
     pc.position.y = (compact ? 0.9 : 0) + Math.sin(t * 0.9) * 0.03;
 
-    for (const [rotor, speed] of fans) rotor.rotation.z += speed * dt;
+    if (!still) for (const [rotor, speed] of fans) rotor.rotation.z += speed * dt;
 
     // Reassemble at the end
     const reassemble = ramp(p, 0.9, 0.98);
@@ -542,6 +545,7 @@ export function createTuneScene(canvas) {
 
   return {
     setProgress(p) { target = clamp01(p); },
+    setStill(on) { still = on; },
     start() {
       if (running) return;
       running = true;

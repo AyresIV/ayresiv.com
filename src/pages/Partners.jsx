@@ -5,6 +5,7 @@ import NeonCard from '../components/NeonCard';
 import Footer from '../components/Footer';
 import usePageMeta from '../hooks/usePageMeta';
 import { Twitch } from 'lucide-react';
+import BrandIcon from '../components/BrandIcon';
 
 import partners from '../data/partners';
 
@@ -66,6 +67,17 @@ const Partners = () => {
                         aria-label={`${partner.name} on Twitch`}
                       >
                         <Twitch size={20} />
+                      </a>
+                    )}
+                    {partner.youtube && (
+                      <a
+                        href={partner.youtube}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="partner-link"
+                        aria-label={`${partner.name} on YouTube`}
+                      >
+                        <BrandIcon name="youtube" size={22} />
                       </a>
                     )}
                   </div>

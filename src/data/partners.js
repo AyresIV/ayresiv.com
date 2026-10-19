@@ -1,5 +1,6 @@
 // Partner creators shown on the Partners page. The "Trusted Partners" stat on
 // Home and About is this list's length, so adding someone here updates it.
+import PanduhImg from '../assets/images/Panduh.webp';
 import WallahImg from '../assets/images/Wallah.webp';
 import BennyImg from '../assets/images/Benny.webp';
 import KruzerImg from '../assets/images/Kruzer.webp';
@@ -17,6 +18,7 @@ import BuiImg from '../assets/images/Bui.webp';
 import PanthoImg from '../assets/images/Pantho.webp';
 
 const partners = [
+  { name: "Panduh", image: PanduhImg, twitter: "https://x.com/Panduhgg", twitch: "https://www.twitch.tv/panduh" },
   { name: "Wallah", image: WallahImg, twitter: "https://x.com/saywallahbruhh", twitch: "https://www.twitch.tv/wallah" },
   { name: "Benny", image: BennyImg, twitter: "https://x.com/ShmurdaBenny", twitch: "https://www.twitch.tv/benny" },
   { name: "Kruzer", image: KruzerImg, twitter: "https://x.com/kruzer", twitch: "https://www.twitch.tv/Kruzer" },

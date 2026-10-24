@@ -1,5 +1,6 @@
 // Partner creators shown on the Partners page. The "Trusted Partners" stat on
 // Home and About is this list's length, so adding someone here updates it.
+import MendezImg from '../assets/images/Mendez.webp';
 import PanduhImg from '../assets/images/Panduh.webp';
 import WallahImg from '../assets/images/Wallah.webp';
 import BennyImg from '../assets/images/Benny.webp';
@@ -20,6 +21,7 @@ import PanthoImg from '../assets/images/Pantho.webp';
 const partners = [
   { name: "Panduh", image: PanduhImg, twitter: "https://x.com/Panduhgg", twitch: "https://www.twitch.tv/panduh", youtube: "https://www.youtube.com/@PanduhGG" },
   { name: "Wallah", image: WallahImg, twitter: "https://x.com/saywallahbruhh", twitch: "https://www.twitch.tv/wallah", youtube: "https://www.youtube.com/c/saywallahbruh" },
+  { name: "Mendez", image: MendezImg, twitter: "https://x.com/Mend5z", twitch: "https://www.twitch.tv/Mendez", youtube: "https://www.youtube.com/channel/UCToLRU0-85QA90zDlCUbg-Q" },
   { name: "Benny", image: BennyImg, twitter: "https://x.com/ShmurdaBenny", twitch: "https://www.twitch.tv/benny", youtube: "https://www.youtube.com/iAMBennyShmurda?sub_confirmation=1" },
   { name: "Kruzer", image: KruzerImg, twitter: "https://x.com/kruzer", twitch: "https://www.twitch.tv/Kruzer", youtube: "https://www.youtube.com/@kruzer" },
   { name: "BogOnMyDog", image: BogImg, twitter: "https://x.com/BogOnMyDog", twitch: "https://www.twitch.tv/bogonmydog", youtube: "https://www.youtube.com/@BogOnMyDog" },

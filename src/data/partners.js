@@ -13,9 +13,7 @@ import LanzaImg from '../assets/images/lanza.webp';
 import SayariuImg from '../assets/images/Sayariu.webp';
 import AlexImg from '../assets/images/Alex.webp';
 import SnazzyImg from '../assets/images/Snazzy.webp';
-import HugzImg from '../assets/images/Hugz.webp';
 import GaryImg from '../assets/images/Gary.webp';
-import BuiImg from '../assets/images/Bui.webp';
 import PanthoImg from '../assets/images/Pantho.webp';
 
 const partners = [
@@ -32,9 +30,7 @@ const partners = [
   { name: "Sayariu", image: SayariuImg, twitter: "https://x.com/Sayariu", twitch: "https://www.twitch.tv/sayariu", youtube: "https://www.youtube.com/channel/UCr6ZDgVROruCW6UmqcnW5lw" },
   { name: "AlexApe", image: AlexImg, twitter: "https://x.com/AIexApe", twitch: "https://www.twitch.tv/AlexApe", youtube: "https://www.youtube.com/channel/UC5trbIuo-WyndjYp22gSDUw" },
   { name: "TheSnazzzyRock", image: SnazzyImg, twitter: "https://x.com/TheSnazzzyRock", twitch: "https://www.twitch.tv/thesnazzzyrock", youtube: "https://www.youtube.com/@thesnazzzyrock" },
-  { name: "Hugz", image: HugzImg, twitter: "https://x.com/qHugzz", twitch: "https://www.twitch.tv/qHugz", youtube: "https://www.youtube.com/channel/UC3nYOhGVZAGJ-KPDvO_II0w" },
   { name: "GuapoGary", image: GaryImg, twitter: "https://x.com/GuapoGary_", twitch: "https://www.twitch.tv/guapogary", youtube: "https://www.youtube.com/@GuapoGary" },
-  { name: "Buincey", image: BuiImg, twitter: "https://x.com/Buincey", twitch: "https://www.twitch.tv/buincey", youtube: "https://www.youtube.com/@Buincey" },
   { name: "Pantho", image: PanthoImg, twitter: "https://x.com/yPantho", twitch: "https://www.twitch.tv/pantho", youtube: "https://www.youtube.com/channel/UCZEhvl4aVAJsNjjGU6A7EXA" }
 ];
 

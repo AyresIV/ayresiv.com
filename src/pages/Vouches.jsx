@@ -17,7 +17,6 @@ const Vouches = () => {
     { text: "For anyone trying to squeeze as much performance as possible out of your rig I would definitely recommend SpartaOS. PC feels very responsive and snappy, also for anyone with X3D chips there's a custom Power Plan with these CPUs in mind", client: "Jomey J" },
     { text: "SpartaOS is actually so god damn clean, normal windows is so horrible and the UI in this is perfect and makes everything so smooth when using", client: "s1ght" },
     { text: "Ayres did a great job on my PC improved my performance and was fast and very knowledgeable.", client: "Momac" },
-    { text: "I paid him to optimize my pc once in 2022 ended up marrying the guy so you can clearly see it works.", client: "Devfox (Wife)" },
     { text: "Vouch, quick and easy optimization my pc no longer crashes randomly. One of the realest uncs I ever met, gotta show some love and appreciation to this man.", client: "Sung" },
     { text: "vouch, he helped me out reaching the potentials of my computer on top of being a cool and awesome mate love this guy for his work and friendship", client: "Jer" },
     { text: "big vouch, helped my pc with undervolting and optimization. game and pc feels butta smooth.", client: "Nest" },

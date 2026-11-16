@@ -210,6 +210,10 @@ body.native .homeShot{bottom:env(safe-area-inset-bottom,0px)}
 .srch input{flex:1;min-width:0;background:none;border:none;outline:none;color:var(--fg);font:inherit;font-size:14.5px;direction:rtl}
 .srch input::placeholder{color:var(--mute)}
 .games{overflow:hidden}
+#s-select .games{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;margin:0 -4px;padding:0 4px 18px;-webkit-mask:linear-gradient(#000 calc(100% - 24px),transparent);mask:linear-gradient(#000 calc(100% - 24px),transparent)}
+#s-select .games::-webkit-scrollbar{display:none}
+#s-select .gm{flex:none}
+#s-select .grow{display:none}
 .none{text-align:center;color:var(--mute);font-size:14px;padding:16px 0}
 .cta{width:100%;text-align:center;transition:transform .15s,filter .2s}
 .cta[disabled]{filter:grayscale(1) brightness(.6);cursor:default}
@@ -361,7 +365,7 @@ body.native .homeShot{bottom:env(safe-area-inset-bottom,0px)}
   <div class="devs"><button class="dev on" data-dev="מחשב" type="button"><span class="dic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></span>מחשב<i class="dchk"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i></button><button class="dev" data-dev="קונסולה" type="button"><span class="dic"><svg viewBox="0 0 24 24"><path d="M6.5 8h11a4 4 0 0 1 3.9 4.8l-.8 3.6a2.4 2.4 0 0 1-4.1 1.1L14.6 15H9.4l-1.9 2.5a2.4 2.4 0 0 1-4.1-1.1l-.8-3.6A4 4 0 0 1 6.5 8z"/><path d="M7.5 11v3M6 12.5h3"/><circle cx="16" cy="11.5" r=".6"/><circle cx="17.5" cy="13.5" r=".6"/></svg></span>קונסולה<i class="dchk"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i></button><button class="dev" data-dev="נייד" type="button"><span class="dic"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.2"/><path d="M11 18.5h2"/></svg></span>נייד<i class="dchk"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i></button></div>
   <h2>איזה משחק?</h2>
   <label class="srch"><span><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg></span><input id="q" type="text" placeholder="חיפוש משחק" autocomplete="off"></label>
-  <div class="games" id="games"><button class="gm on" data-game="Fortnite" type="button"><span class="thumb" style="background:repeating-linear-gradient(135deg,rgba(255,255,255,.14) 0 6px,transparent 6px 16px),linear-gradient(135deg,#7b3cff,#2c6bff)">F</span><span class="gtx"><b>Fortnite</b><small>Battle Royale</small></span><i class="sel"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><i class="rad"></i></button><button class="gm" data-game="Valorant" type="button"><span class="thumb" style="background:repeating-linear-gradient(60deg,rgba(255,255,255,.16) 0 2px,transparent 2px 10px),linear-gradient(135deg,#ff3d5a,#7a0d22)">V</span><span class="gtx"><b>Valorant</b><small>Tactical Shooter</small></span><i class="sel"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><i class="rad"></i></button><button class="gm" data-game="Counter-Strike 2" type="button"><span class="thumb" style="background:linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px) 0 0/10px 10px,linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px) 0 0/10px 10px,linear-gradient(135deg,#f29b2c,#6b3a08)">C</span><span class="gtx"><b>Counter-Strike 2</b><small>Tactical Shooter</small></span><i class="sel"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><i class="rad"></i></button><button class="gm" data-game="Apex Legends" type="button"><span class="thumb" style="background:conic-gradient(from 210deg at 70% 60%,rgba(255,255,255,.22) 0 60deg,transparent 60deg),linear-gradient(135deg,#1fb79c,#0b4e47)">A</span><span class="gtx"><b>Apex Legends</b><small>Battle Royale</small></span><i class="sel"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><i class="rad"></i></button><button class="gm" data-game="Destiny 2" type="button"><span class="thumb" style="background:radial-gradient(circle at 70% 40%,transparent 8px,rgba(255,255,255,.2) 9px 11px,transparent 12px 17px,rgba(255,255,255,.14) 18px 19px,transparent 20px),linear-gradient(135deg,#5f7fb5,#1c2741)">D</span><span class="gtx"><b>Destiny 2</b><small>Action RPG</small></span><i class="sel"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><i class="rad"></i></button><p class="none" id="none" hidden>לא נמצא משחק</p></div>
+  <div class="games" id="games"><p class="none" id="none" hidden>לא נמצא משחק</p></div>
   <div class="grow"></div>
   <button class="cta" id="optBtn" type="button">בצעו אופטימיזציה לחיבור</button>
 </div></div><div class="layer" id="s-optimize" data-screen="optimize"><div class="sb"><span>13:48</span><span class="sbr"><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 16 12"><path d="M8 11.5 1 4.6a10 10 0 0 1 14 0z"/></svg><svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="3" fill="none" stroke="currentColor" opacity=".5"/><rect x="2.5" y="2.5" width="15" height="7" rx="1.5"/><rect x="24.5" y="4" width="2" height="4" rx="1" opacity=".5"/></svg></span></div>
@@ -446,12 +450,35 @@ let cur=null, stack=[], goingHome=false, timers=[], toastT=0, state={dev:'מחש
 /* Demo data per game: servers in ping order (first = recommended) and the ping before optimising. */
 const NET={
   'Fortnite':        {before:112,servers:[['מילאנו',38],['פרנקפורט',64],['לונדון',71],['פריז',83]]},
-  'Valorant':        {before:118,servers:[['איסטנבול',41],['פרנקפורט',62],['פריז',74],['לונדון',79]]},
+  'VALORANT':        {before:118,servers:[['איסטנבול',41],['פרנקפורט',62],['פריז',74],['לונדון',79]]},
   'Counter-Strike 2':{before:105,servers:[['וינה',44],['פרנקפורט',60],['שטוקהולם',81],['מדריד',92]]},
   'Apex Legends':    {before:121,servers:[['פרנקפורט',52],['אמסטרדם',61],['לונדון',66],['פריז',72]]},
   'Destiny 2':       {before:109,servers:[['פרנקפורט',49],['אמסטרדם',58],['לונדון',65],['פריז',70]]}
 };
-const net=()=>NET[state.game]||NET.Fortnite;
+/* help: game ports. 'S' = Steam's shared ports, string = note instead of ports. */
+const STEAM=['27015–27030','27015–27031'];
+const PORTS=[
+ ['Fortnite','x','לפי הנחיות Epic Games'],['Roblox','x','','49152–65535'],['Minecraft','x','25565','19132'],
+ ['Call of Duty: Warzone','x','משתנה לפי פלטפורמה'],['Apex Legends','x','S'],['Grand Theft Auto V (Online)','x','','6672, 61455–61458'],
+ ['VALORANT','pc','2099, 5222–5223, 8088, 8393–8400','7000–8000, 8180–8181'],['League of Legends','pc','2099, 5222–5223, 8393–8400','5000–5500'],
+ ['Destiny 2','x','S'],['Rocket League','x','S'],['Rust','pc','28015','28015'],['Counter-Strike 2','pc','S'],['Dota 2','pc','S'],
+ ['PUBG: BATTLEGROUNDS','x','S'],['ARK: Survival Ascended','x','7777, 27015, 27020','7777, 27015'],['Rainbow Six Siege','x','S'],
+ ['Team Fortress 2','pc','S'],['Overwatch 2','x','S'],['Lost Ark','pc','S'],['War Thunder','x','80, 443, 5222–5223, 5332','3478, 5222–5223'],
+ ['Genshin Impact','x','22102','22102'],['Final Fantasy XIV Online','pc','54992–54994, 55006–55007','54992–54994'],
+ ['World of Warcraft','pc','3724, 1119, 6012','3724'],['The Elder Scrolls Online','pc','S'],['Fall Guys','x','לפי הנחיות Epic Games'],
+ ['EA SPORTS FC 25','x','S'],['Sea of Thieves','x','S'],['Dead by Daylight','pc','S'],['Palworld','pc','25575','25575'],
+ ['The Division 2','pc','S'],['Stellaris','pc','S'],['New World: Aeternum','pc','S'],['Path of Exile','pc','6112','6112'],
+ ['V Rising','pc','9876','9876'],['Black Desert','pc','S'],['Diablo IV','x','1119, 3724, 6112, 6881–6999','1119, 3724'],
+ ['HELLDIVERS 2','pc','S'],["No Man's Sky",'x','S'],['SCUM','pc','7777','7777'],['Grounded','x','S'],
+ ['Conan Exiles','pc','7777, 27015, 27020','7777, 27015'],['7 Days to Die','pc','26900–26902','26900–26902'],['PAYDAY 3','pc','S'],
+ ['Sons Of The Forest','pc','8766','8766'],["Baldur's Gate 3",'pc','S'],['Phasmophobia','pc','S'],['The Sims 4','pc','S'],
+ ['Stardew Valley','pc','S'],['Subnautica','pc','משחק יחיד – אין צורך בפורטים'],['Raft','pc','7656','7656']
+];
+/* every game in PORTS gets demo servers; hand-written NET entries win */
+const SRV=['פרנקפורט','אמסטרדם','לונדון','פריז','מילאנו','וינה','איסטנבול','שטוקהולם','מדריד','ורשה'];
+const hash=t=>[...t].reduce((h,c)=>(h*31+c.charCodeAt(0))>>>0,7);
+function demoNet(g){const h=hash(g),srv=[];let b=36+h%18;const out=[];for(let i=0;out.length<4;i++){const n=SRV[(h+i*3)%SRV.length];if(!srv.includes(n)){srv.push(n);out.push([n,b]);b+=6+((h>>>(i*3))%12);}}return {before:100+h%28,servers:out};}
+const net=()=>NET[state.game]||(NET[state.game]=demoNet(state.game));
 function clear(){timers.forEach(clearTimeout);timers=[];}
 function later(ms,fn){timers.push(setTimeout(fn,ms));}
 /* how: 'push' adds a history entry (the phone's back button returns to the
@@ -495,6 +522,17 @@ function runLoad(){
 }
 /* select */
 $$('.dev').forEach(d=>d.addEventListener('click',()=>{$$('.dev').forEach(x=>x.classList.remove('on'));d.classList.add('on');state.dev=d.dataset.dev;}));
+/* game picker: built from the full PORTS list */
+const GENRE={"Fortnite": "Battle Royale", "Roblox": "Sandbox", "Minecraft": "Sandbox", "Call of Duty: Warzone": "Battle Royale", "Apex Legends": "Battle Royale", "Grand Theft Auto V (Online)": "Open World", "VALORANT": "Tactical Shooter", "League of Legends": "MOBA", "Destiny 2": "Action RPG", "Rocket League": "Sports", "Rust": "Survival", "Counter-Strike 2": "Tactical Shooter", "Dota 2": "MOBA", "PUBG: BATTLEGROUNDS": "Battle Royale", "ARK: Survival Ascended": "Survival", "Rainbow Six Siege": "Tactical Shooter", "Team Fortress 2": "Shooter", "Overwatch 2": "Hero Shooter", "Lost Ark": "MMORPG", "War Thunder": "Vehicle Combat", "Genshin Impact": "Action RPG", "Final Fantasy XIV Online": "MMORPG", "World of Warcraft": "MMORPG", "The Elder Scrolls Online": "MMORPG", "Fall Guys": "Party", "EA SPORTS FC 25": "Sports", "Sea of Thieves": "Adventure", "Dead by Daylight": "Horror", "Palworld": "Survival", "The Division 2": "Looter Shooter", "Stellaris": "Strategy", "New World: Aeternum": "MMORPG", "Path of Exile": "Action RPG", "V Rising": "Survival", "Black Desert": "MMORPG", "Diablo IV": "Action RPG", "HELLDIVERS 2": "Co-op Shooter", "No Man's Sky": "Exploration", "SCUM": "Survival", "Grounded": "Survival", "Conan Exiles": "Survival", "7 Days to Die": "Survival", "PAYDAY 3": "Co-op Shooter", "Sons Of The Forest": "Survival", "Baldur's Gate 3": "RPG", "Phasmophobia": "Horror", "The Sims 4": "Simulation", "Stardew Valley": "Simulation", "Subnautica": "Survival", "Raft": "Survival"};
+const PAT=['repeating-linear-gradient(135deg,rgba(255,255,255,.14) 0 6px,transparent 6px 16px)',
+ 'repeating-linear-gradient(60deg,rgba(255,255,255,.16) 0 2px,transparent 2px 10px)',
+ 'linear-gradient(rgba(255,255,255,.12) 1px,transparent 1px) 0 0/10px 10px,linear-gradient(90deg,rgba(255,255,255,.12) 1px,transparent 1px) 0 0/10px 10px',
+ 'conic-gradient(from 210deg at 70% 60%,rgba(255,255,255,.22) 0 60deg,transparent 60deg)',
+ 'radial-gradient(circle at 70% 40%,transparent 8px,rgba(255,255,255,.2) 9px 11px,transparent 12px 17px,rgba(255,255,255,.14) 18px 19px,transparent 20px)'];
+const CHK='<i class="sel"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.2 4.2L19 7"/></svg></i><i class="rad"></i>';
+const escH=t=>t.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+$('#none').insertAdjacentHTML('beforebegin',PORTS.map(([n],i)=>{const h=hash(n)%360,e=escH(n);
+ return '<button class="gm'+(n==='Fortnite'?' on':'')+'" data-game="'+e+'" type="button"><span class="thumb" style="background:'+PAT[i%5]+',linear-gradient(135deg,hsl('+h+' 75% 55%),hsl('+h+' 70% 18%))">'+n.replace(/^[^A-Za-z0-9]+/,'')[0].toUpperCase()+'</span><span class="gtx"><b>'+e+'</b><small>'+(GENRE[n]||'')+'</small></span>'+CHK+'</button>';}).join(''));
 const syncBtn=()=>{const on=$('.gm.on');$('#optBtn').disabled=!on||on.hidden;};
 $$('.gm').forEach(g=>g.addEventListener('click',()=>{$$('.gm').forEach(x=>x.classList.remove('on'));g.classList.add('on');state.game=g.dataset.game;syncBtn();}));
 $('#q').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();let n=0;$$('.gm').forEach(g=>{const m=!q||g.dataset.game.toLowerCase().includes(q);g.hidden=!m;if(m)n++;});$('#none').hidden=n>0;syncBtn();});
@@ -528,25 +566,6 @@ function runRes(){
   requestAnimationFrame(f);
 }
 $('#doneBtn').addEventListener('click',()=>{goHome();const [srv,ms]=net().servers[0],t=$('#toast');t.textContent='✓ '+state.game+' מחובר לשרת '+srv+' · '+ms+'ms';t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2600);});
-/* help: game ports. 'S' = Steam's shared ports, string = note instead of ports. */
-const STEAM=['27015–27030','27015–27031'];
-const PORTS=[
- ['Fortnite','x','לפי הנחיות Epic Games'],['Roblox','x','','49152–65535'],['Minecraft','x','25565','19132'],
- ['Call of Duty: Warzone','x','משתנה לפי פלטפורמה'],['Apex Legends','x','S'],['Grand Theft Auto V (Online)','x','','6672, 61455–61458'],
- ['VALORANT','pc','2099, 5222–5223, 8088, 8393–8400','7000–8000, 8180–8181'],['League of Legends','pc','2099, 5222–5223, 8393–8400','5000–5500'],
- ['Destiny 2','x','S'],['Rocket League','x','S'],['Rust','pc','28015','28015'],['Counter-Strike 2','pc','S'],['Dota 2','pc','S'],
- ['PUBG: BATTLEGROUNDS','x','S'],['ARK: Survival Ascended','x','7777, 27015, 27020','7777, 27015'],['Rainbow Six Siege','x','S'],
- ['Team Fortress 2','pc','S'],['Overwatch 2','x','S'],['Lost Ark','pc','S'],['War Thunder','x','80, 443, 5222–5223, 5332','3478, 5222–5223'],
- ['Genshin Impact','x','22102','22102'],['Final Fantasy XIV Online','pc','54992–54994, 55006–55007','54992–54994'],
- ['World of Warcraft','pc','3724, 1119, 6012','3724'],['The Elder Scrolls Online','pc','S'],['Fall Guys','x','לפי הנחיות Epic Games'],
- ['EA SPORTS FC 25','x','S'],['Sea of Thieves','x','S'],['Dead by Daylight','pc','S'],['Palworld','pc','25575','25575'],
- ['The Division 2','pc','S'],['Stellaris','pc','S'],['New World: Aeternum','pc','S'],['Path of Exile','pc','6112','6112'],
- ['V Rising','pc','9876','9876'],['Black Desert','pc','S'],['Diablo IV','x','1119, 3724, 6112, 6881–6999','1119, 3724'],
- ['HELLDIVERS 2','pc','S'],["No Man's Sky",'x','S'],['SCUM','pc','7777','7777'],['Grounded','x','S'],
- ['Conan Exiles','pc','7777, 27015, 27020','7777, 27015'],['7 Days to Die','pc','26900–26902','26900–26902'],['PAYDAY 3','pc','S'],
- ['Sons Of The Forest','pc','8766','8766'],["Baldur's Gate 3",'pc','S'],['Phasmophobia','pc','S'],['The Sims 4','pc','S'],
- ['Stardew Valley','pc','S'],['Subnautica','pc','משחק יחיד – אין צורך בפורטים'],['Raft','pc','7656','7656']
-];
 let showAll=false;
 const esc=t=>t.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function renderPorts(){
@@ -629,7 +648,7 @@ wake();
 const fsB=$('#fsB'); const fsT=()=>{if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});else document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen().catch(()=>{});};
 fsB.addEventListener('click',fsT);
 document.addEventListener('fullscreenchange',()=>{fsB.querySelector('span').textContent=document.fullscreenElement?'יציאה ממסך מלא':'מסך מלא';});
-function reset(){state={dev:'מחשב',game:'Fortnite'};$('#q').value='';$$('.gm').forEach(g=>{g.hidden=false;g.classList.toggle('on',g.dataset.game==='Fortnite');});$('#none').hidden=true;$$('.dev').forEach(d=>d.classList.toggle('on',d.dataset.dev==='מחשב'));syncBtn();$('#toast').classList.remove('show');ronReset();goHome();}
+function reset(){state={dev:'מחשב',game:'Fortnite'};$('#q').value='';$$('.gm').forEach(g=>{g.hidden=false;g.classList.toggle('on',g.dataset.game==='Fortnite');});$('#none').hidden=true;$('#games').scrollTop=0;$$('.dev').forEach(d=>d.classList.toggle('on',d.dataset.dev==='מחשב'));syncBtn();$('#toast').classList.remove('show');ronReset();goHome();}
 document.addEventListener('keydown',e=>{if(e.target.tagName==='INPUT')return;if(e.key==='f'||e.key==='F'||e.key==='כ'){fsT();return;}if(e.key==='r'||e.key==='R'||e.key==='ר'){reset();return;}if(e.key==='Home'){goHome();return;}const i=ORDER.indexOf(cur);if(e.key==='ArrowLeft'&&i<ORDER.length-1)go(ORDER[i+1]);if(e.key==='ArrowRight'&&i>0)go(ORDER[i-1]);});
 go(ORDER.includes(location.hash.slice(1))?location.hash.slice(1):'home','replace');
 /* on a phone browser (not installed): first tap goes fullscreen and locks portrait (Android) */
